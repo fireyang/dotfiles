@@ -1,1 +1,6 @@
-/Users/fireyang/.bash_fy
+#my bashrc
+#
+# init z   https://github.com/rupa/z
+#
+. ~/code/z/z.sh
+source $HOME/.gvm/scripts/gvm
