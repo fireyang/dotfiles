@@ -1,1 +1,1 @@
-/Users/fireyang/.vimrc
+/Users/fireyang/.vim/my_vimrc
