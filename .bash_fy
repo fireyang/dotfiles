@@ -2,4 +2,6 @@
 #
 # init z   https://github.com/rupa/z
 . ~/code/z/z.sh
+#
+#  安装: bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer)
 source $HOME/.gvm/scripts/gvm
