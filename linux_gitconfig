@@ -1,0 +1,13 @@
+[user]
+	name = fireyang_ali
+	email = shenhuan007@gmail.com
+[alias]
+	st = status
+	ci = commit
+	br = branch
+[color]
+    branch = auto
+    status = auto
+    diff = auto
+    log = auto
+
