@@ -66,6 +66,8 @@ map <leader>r :noh<cr>
 "使用空格代替tab
 set et
 
+"ctags"
+map <C-F12> :!ctags -R . <cr>
 "set guifont=Courier_New:h16:cANSI
 "set guifontwide=YaHei\ Consolas\ Hybrid:h16
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 15 
@@ -140,9 +142,9 @@ imap <A-r> <esc>:%s/
 vmap <A-r> <esc>:%s/
 nmap <A-r> :%s/
 " ctrl + o
-imap <C-o> <C-O>:e
-vmap <C-o> <esc>:e
-nmap <C-o> :e 
+"imap <C-o> <C-O>:e
+"vmap <C-o> <esc>:e
+"nmap <C-o> :e 
 "}}}
 
 if version >603
@@ -232,8 +234,8 @@ Plugin 'rking/ag.vim'
 "erlang
 Plugin 'jimenezrick/vimerl'
 "Golang
-"Plugin 'nsf/gocode'
-"Plugin 'fatih/vim-go'
+Plugin 'nsf/gocode'
+Plugin 'fatih/vim-go'
 
 "{{{  airline
 Plugin 'bling/vim-airline'
