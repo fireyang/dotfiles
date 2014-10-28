@@ -187,7 +187,7 @@ map <leader>th :tabp<cr>
 " Fast editing of the .vimrc
 "map <leader>e :e! $HOME/.vimrc<cr>
 "edit vimrc file
-map <leader>e :exec "edit" '$inputfile'<cr>
+map <leader>e :e! $HOME/dotfiles/cpp_vimrc<cr>
 " fast saving 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
