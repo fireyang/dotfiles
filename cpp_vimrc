@@ -2,6 +2,8 @@
 set nocompatible
 if has("mac")
     set encoding=utf-8
+elseif has("unix")
+    set encoding=utf-8
 endif
 set fileencodings=utf-8
 filetype off
@@ -96,7 +98,8 @@ map <silent> <leader>/ :let @+=expand('%:p:h')<CR>
 
 
 "BufExplorer 插件{{{
-Plugin 'bufexplorer.zip'
+"Plugin 'bufexplorer.zip'
+Plugin 'jlanzarotta/bufexplorer'
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 "切换下一缓存区文件
@@ -222,7 +225,7 @@ let NERDTreeIgnore=['\.svn$','.fla$','.doc$','.swc$']
 " }}}
 
 Plugin 'Lokaltog/powerline-fonts'
-Plugin 'pangloss/vim-javascript'
+"Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-vinegar'
