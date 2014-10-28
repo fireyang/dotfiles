@@ -12,7 +12,7 @@ if has("mac")
     let neocomplete_mode =0
 endif
 
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim 
+set rtp+=~/.vim/bundle/Vundle.vim 
 call vundle#begin()  
 
 
