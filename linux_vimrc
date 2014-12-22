@@ -98,7 +98,9 @@ map <silent> <leader>/ :let @+=expand('%:p:h')<CR>
 
 
 "BufExplorer 插件{{{
-Plugin 'bufexplorer.zip'
+"Plugin 'bufexplorer.zip'
+Plugin 'jlanzarotta/bufexplorer'
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 "切换下一缓存区文件
@@ -217,7 +219,7 @@ nnoremap <silent> <s-backspace> :BD!<cr>
 au FileType nerdtree cnoreabbrev <buffer> bd <nop>
 au FileType nerdtree cnoreabbrev <buffer> BD <nop>
 "NERDTree过滤文件
-let NERDTreeIgnore=['\.svn$','.fla$','.doc$','.swc$',".o"]
+let NERDTreeIgnore=['.svn$','.fla$','.doc$','.swc$','\.o$']
 "NERDTree标签文件目录
 "let NERDTreeBookmarksFile='/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
 "let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
