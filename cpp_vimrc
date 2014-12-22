@@ -213,12 +213,13 @@ nmap <silent> <F7> :NERDTreeToggle<CR>
 " bufkill bd's: really do not mess with NERDTree buffer
 nnoremap <silent> <backspace> :BD<cr>
 nnoremap <silent> <s-backspace> :BD!<cr>
+let g:NERDTreeWinSize=20
 
 " Prevent :bd inside NERDTree buffer
 au FileType nerdtree cnoreabbrev <buffer> bd <nop>
 au FileType nerdtree cnoreabbrev <buffer> BD <nop>
 "NERDTree过滤文件
-let NERDTreeIgnore=['\.svn$','.fla$','.doc$','.swc$']
+"let NERDTreeIgnore=['\.svn$','.fla$','.doc$','.swc$']
 "NERDTree标签文件目录
 "let NERDTreeBookmarksFile='/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
 "let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
@@ -273,6 +274,11 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " }}}
+"
+" {{{ c.vim
+"Plugin 'vim-scripts/c.vim'
+" }}}
+
 
 call vundle#end()
 filetype plugin indent on
