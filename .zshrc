@@ -8,7 +8,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="dpoggi"
-ZSH_THEME="miloshadzic"
+ZSH_THEME="zhann"
+#ZSH_THEME="miloshadzic"
 
 
 # Example aliases
@@ -45,8 +46,7 @@ ZSH_THEME="miloshadzic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git osx autojump python node brew)
-plugins=(git)
+plugins=(git golang tmux sudo github z)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bash_fy
 source ~/.local_zsh
