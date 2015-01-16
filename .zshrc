@@ -14,12 +14,6 @@ ZSH_THEME="miloshadzic"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cdh="cd /Volumes/hd2"
-alias blog="cd /Volumes/hd2/work/blog/fireyang.github.com"
-alias mvim='open -a MacVim'
-
-hash -d hd2="/Volumes/hd2"
-hash -d knight="/Volumes/hd2/workspace/knight"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -55,13 +49,4 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_fy
-
-# Customize to your needs...
-export PATH=$PATH:/usr/local/share/npm/bin:/opt/local/bin:/opt/local/sbin:/Volumes/hd2/flex_sdk_4.6_new/bin:/Volumes/hd2/flex_sdk_4.6_new/:/Users/fireyang/bin/:somepath:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/fireyang/.rvm/bin
-export PATH=/usr/local/bin:/usr/local/mysql/bin:$PATH
-#erlang
-export PATH=$PATH:/Volumes/hd2/erlang_kerl/erlang/bin
-#quick-cocos2d-x
-export QUICK_COCOS2DX_ROOT=/Volumes/hd2/code_source/quick-cocos2d-x
-
-[[ -s /Users/fireyang/.nvm/nvm.sh ]] && . /Users/fireyang/.nvm/nvm.sh # This loads NVM
+source ~/.local_zsh
