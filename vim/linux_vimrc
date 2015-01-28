@@ -192,7 +192,7 @@ map <leader>th :tabp<cr>
 " Fast editing of the .vimrc
 "map <leader>e :e! $HOME/.vimrc<cr>
 "edit vimrc file
-map <leader>e :exec "edit" '~/dotfiles/linux_vimrc'<cr>
+map <leader>e :exec "edit" '~/dotfiles/vim/linux_vimrc'<cr>
 " fast saving 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
@@ -240,6 +240,7 @@ Plugin 'jimenezrick/vimerl'
 Plugin 'nsf/gocode'
 Plugin 'fatih/vim-go'
 Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'sjl/gundo.vim'
 
 "{{{  airline
 Plugin 'bling/vim-airline'
