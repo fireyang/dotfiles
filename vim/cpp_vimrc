@@ -14,6 +14,14 @@ if has("mac")
     let neocomplete_mode =0
 endif
 
+map ft :call Search_Word()<CR>:cw<CR>
+function Search_Word()
+    let w = expand("<cword>") " 在当前光标位置抓词
+    execute 'vimgrep /' . w . '/j **/*.cpp'
+    "echo w
+endfunction
+
+
 set rtp+=~/.vim/bundle/Vundle.vim 
 call vundle#begin()  
 
