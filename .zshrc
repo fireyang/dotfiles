@@ -49,22 +49,4 @@ ZSH_THEME="zhann"
 plugins=(git golang tmux sudo github z)
 
 source $ZSH/oh-my-zsh.sh
-<<<<<<< HEAD
-source ~/.bash_fy
-
-# Customize to your needs...
-export PATH=$PATH:/usr/local/share/npm/bin:/opt/local/bin:/opt/local/sbin:/Volumes/hd2/flex_sdk_4.6_new/bin:/Volumes/hd2/flex_sdk_4.6_new/:/Users/fireyang/bin/:somepath:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/fireyang/.rvm/bin
-export PATH=/usr/local/bin:/usr/local/mysql/bin:$PATH
-#erlang
-export PATH=$PATH:/Volumes/hd2/erlang_kerl/erlang/bin
-export PATH=$PATH:/Volumes/hd2/work/rebar/ebin
-export PATH=$PATH:~/bin
-#quick-cocos2d-x
-export QUICK_COCOS2DX_ROOT=/Volumes/hd2/code_source/quick-cocos2d-x
-
-export GOPATH=/Volumes/hd2/gopath
-
-[[ -s /Users/fireyang/.nvm/nvm.sh ]] && . /Users/fireyang/.nvm/nvm.sh # This loads NVM
-=======
-source ~/.local_zsh
->>>>>>> 0b3092fd210a2e2ec2479bd45203a27f975831bd
+source ~/.zshrc_local
