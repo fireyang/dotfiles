@@ -13,9 +13,7 @@ filetype off        " required!
 "set rtp +=~/.vim/bundle/vundle/
 "call vundle#rc()
 set rtp+=$VIM/vimfiles/bundle/Vundle.vim 
-"call vundle#rc('$VIM/vimfiles/bundle/')  
 call vundle#begin()  
-
 
 "set encoding=utf-8
 set fileencodings=utf-8
@@ -188,7 +186,7 @@ map <leader>th :tabp<cr>
 " Fast editing of the .vimrc
 "map <leader>e :e! $HOME/.vimrc<cr>
 "edit vimrc file
-map <leader>e :exec "edit" '$VIM/my_vimrc.vimrc'<cr>
+map <leader>e :exec "edit" '$VIM/win_vimrc'<cr>
 " fast saving 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
@@ -205,8 +203,8 @@ map <leader>cd :cd %:p:h<CR>
 
 
 " FuzzyFinder
-Plugin 'L9'
-Plugin 'FuzzyFinder'
+"Plugin 'L9'
+"Plugin 'FuzzyFinder'
 " FuF customisations "{{{
 let g:fuf_modesDisable = []
 "nnoremap <leader>h :FufHelp<CR>
@@ -227,8 +225,8 @@ nnoremap <leader>2  :FufBuffer<CR>
 
 
 "javascript {{{
-Plugin 'pangloss/vim-javascript'
-Plugin 'jQuery'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'jQuery'
 " }}}
 
 " syntastic {{{
@@ -252,7 +250,7 @@ Plugin 'plasticboy/vim-markdown'
 
 
 "Solarized color{{{
-Plugin 'Solarized'
+"Plugin 'Solarized'
 " }}}
 
 "golang  {{{
@@ -260,13 +258,13 @@ Plugin 'Solarized'
 "Plugin 'Blackrush/vim-gocode'
 "}}}
 
-Plugin 'unite.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'oblitum/bufkill'
+"Plugin 'unite.vim'
+"Plugin 'tpope/vim-surround'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'oblitum/bufkill'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'uarun/vim-protobuf'
-Plugin 'ack.vim'
+"Plugin 'ack.vim'
 "set auto open Winmanager 
 "gist.vim{{{
 "Plugin 'mattn/gist-vim'
@@ -280,8 +278,9 @@ Plugin 'ack.vim'
 
 
 "Ctrlp.vim{{{
-Plugin 'ctrlp.vim'
-nmap <F2> :CtrlP<CR>
+Plugin 'kien/ctrlp.vim'
+map <silent> <leader>1 :CtrlP<CR>
+map <silent> <leader>2 :CtrlPBuffer<CR>
 "过滤文件
 set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -297,25 +296,8 @@ let g:ctrlp_custom_ignore = {
 "Plugin 'neocomplcache'
 " }}}
 
-" 载入文件类型插件
 
-filetype off        " required!
-" ultisnips {{{
-"Plugin 'sirver/ultisnips'
-"Plugin 'UltiSnips'
-"Plugin 'Valloric/YouCompleteMe'
-" }}}
 
-"Plugin 'scrooloose/syntastic'
-"Plugin 'jshint.vim'
-"Plugin 'myhere/vim-nodejs-complete'
-"附加ejs也当作html对待
-au BufNewFile,BufRead *.ejs set filetype=html
-au BufNewFile,BufRead *.js set filetype=javascript
-au BufNewFile,BufRead *.erl set filetype=erlang
-au BufNewFile,BufRead *.snippets set filetype=snippets
-
-"syntax on
 call vundle#end()
 filetype plugin indent on
 syntax enable
