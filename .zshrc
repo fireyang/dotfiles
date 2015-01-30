@@ -61,7 +61,11 @@ export PATH=$PATH:/usr/local/share/npm/bin:/opt/local/bin:/opt/local/sbin:/Volum
 export PATH=/usr/local/bin:/usr/local/mysql/bin:$PATH
 #erlang
 export PATH=$PATH:/Volumes/hd2/erlang_kerl/erlang/bin
+export PATH=$PATH:/Volumes/hd2/work/rebar/ebin
+export PATH=$PATH:~/bin
 #quick-cocos2d-x
 export QUICK_COCOS2DX_ROOT=/Volumes/hd2/code_source/quick-cocos2d-x
+
+export GOPATH=/Volumes/hd2/gopath
 
 [[ -s /Users/fireyang/.nvm/nvm.sh ]] && . /Users/fireyang/.nvm/nvm.sh # This loads NVM
