@@ -1,0 +1,319 @@
+"not a vi
+set nocompatible
+if has("mac")
+    set encoding=utf-8
+endif
+set fileencodings=utf-8
+filetype off
+
+" switch between YCM and NeoComplete
+let neocomplete_mode = 1
+if has("mac")
+    let neocomplete_mode =0
+endif
+
+set rtp+=~/.vim/bundle/Vundle.vim 
+call vundle#begin()  
+
+
+" start vundler
+Plugin 'gmarik/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/molokai'
+
+" general configs
+set expandtab
+set smarttab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set autoindent
+set ruler
+set hidden
+set ignorecase
+set smartcase
+set showmatch
+"set incsearch
+set hls
+"set relativenumber
+"set ls=2
+"set cursorline
+set nowrap
+set backspace=indent,eol,start
+set completeopt -=preview
+set textwidth=95
+set wildmenu
+set ttyfast
+set noshowmode
+set cmdheight=1
+set nu
+
+" set autoread
+
+
+"在输入命令时列出匹配项目，也就是截图底部的效果
+set wildmenu
+
+"打开自动缩,继承前一行的缩进注释 进
+set autoindent
+"默认情况下手动折叠
+set foldmethod=manual
+"取消高亮
+map <leader>r :noh<cr>
+
+"使用空格代替tab
+set et
+
+"ctags"
+map <C-F12> :!ctags -R . <cr>
+"set guifont=Courier_New:h16:cANSI
+"set guifontwide=YaHei\ Consolas\ Hybrid:h16
+"set guifont=Bitstream\ Vera\ Sans\ Mono\ 15 
+"set guifont=Monaco:h12
+"set guifont=SimSun:h8
+"set guifont=Microsoft_Yahei_Mono:h8:cGB2312
+"set guifont=Courier_New:h10:cANSI
+set guifont=Courier_New:h10
+"set guifont=Bitstream\ Vera\ Sans\ Mono:h11:cANSI 
+"set gfw=YouYuan:h8:cGB2312
+
+" 不要生成swap文件
+set noswapfile
+"隐藏菜单栏
+set guioptions-=m
+"隐藏工具栏
+set guioptions-=T
+"set mapleader
+let mapleader = ","
+let g:snips_author = 'FireYang'
+" ESC
+noremap <leader><leader> <Esc>
+
+" copy filename 
+map <silent> <leader>. :let @+=expand('%:p').':'.line('.')<CR>
+" copy path
+map <silent> <leader>/ :let @+=expand('%:p:h')<CR>
+
+
+"BufExplorer 插件{{{
+"Plugin 'bufexplorer.zip'
+Plugin 'jlanzarotta/bufexplorer'
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>
+"切换下一缓存区文件
+map <leader>bn :bn<cr>
+"切换上一缓存区文件
+map <leader>bp :bp<cr>
+" Close all the buffers
+map <leader>ba :1,300 bd!<cr>
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
+
+
+
+" 窗口区域切换,F5 后 ↑↓←→  来切换
+"imap <silent> <C-h> <esc><C-W><left>
+vmap <silent> <C-h> <esc><C-W><left>
+nmap <silent> <C-h> <C-W><left>
+"imap <silent> <C-l> <esc><C-W><right>
+vmap <silent> <C-l> <esc><C-W><right>
+nmap <silent> <C-l> <C-W><right>
+"imap <silent> <C-k> <esc><C-W><up>
+vmap <silent> <C-k> <esc><C-W><up>
+nmap <silent> <C-k> <C-W><up>
+"imap <silent> <C-j> <esc><C-W><down>
+vmap <silent> <C-j> <esc><C-W><down>
+nmap <silent> <C-j> <C-W><down>
+
+inoremap <C-z> <C-O>u
+nnoremap <C-z> u    
+" ctrl + y
+"inoremap <C-y> <C-O><C-R>
+"nnoremap <C-y> <C-R>
+" ctrl + v
+nnoremap <C-b> "+gP
+inoremap <C-b> <C-O>"+gP
+" ctrl + f
+imap <C-f> <esc>:/
+nmap <C-f> :/
+" ctrl + r
+imap <A-r> <esc>:%s/
+vmap <A-r> <esc>:%s/
+nmap <A-r> :%s/
+" ctrl + o
+"imap <C-o> <C-O>:e
+"vmap <C-o> <esc>:e
+"nmap <C-o> :e 
+"}}}
+
+if version >603
+set helplang=cn
+set cmdheight=2
+endi
+
+"切换窗体，并最大化
+"map <C-J> <C-W>j<C-W>_
+"map <C-K> <C-W>k<C-W>_
+"设置状态
+set laststatus=2
+"设置命令行2行
+set cmdheight=2
+"设置缓存
+set nobackup
+set ai
+set lbr
+set hls
+"set no wrap
+set nowrap
+
+
+"customer hotkey===============================
+
+
+"Insert now date
+"map <F3> :echo strftime("%Y-%m-%d %a %I:%M %p")<cr>
+
+" QuickClose
+map <leader>u :ZoomWin<cr>
+map <leader><leader>u :close<cr>
+" VSplit
+map <leader>vs :vsplit<cr><C-l>
+" Tab configuration
+map <leader>tn :tabnew %<cr>
+map <leader>te :tabedit 
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+map <leader>tl :tabN<cr>
+map <leader>th :tabp<cr>
+" Fast editing of the .vimrc
+"map <leader>e :e! $HOME/.vimrc<cr>
+"edit vimrc file
+map <leader>e :exec "edit" '~/dotfiles/vim/linux_vimrc'<cr>
+" fast saving 
+map <leader>w :w<cr>
+map <leader>q :q<cr>
+
+""""""""""""""""""""""""""""""
+" => Vim grep
+""""""""""""""""""""""""""""""
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
+set grepprg=/bin/grep\ -n
+
+"switch to current directory 
+"切换到当前文件目录
+map <leader>cd :cd %:p:h<CR>  
+
+
+" NERDTree插件的快捷键
+Plugin 'scrooloose/nerdtree'
+imap <silent> <F7> <esc>:NERDTreeToggle<CR>
+nmap <silent> <F7> :NERDTreeToggle<CR>
+" bufkill bd's: really do not mess with NERDTree buffer
+nnoremap <silent> <backspace> :BD<cr>
+nnoremap <silent> <s-backspace> :BD!<cr>
+
+" Prevent :bd inside NERDTree buffer
+au FileType nerdtree cnoreabbrev <buffer> bd <nop>
+au FileType nerdtree cnoreabbrev <buffer> BD <nop>
+"NERDTree过滤文件
+let NERDTreeIgnore=['.svn$','.fla$','.doc$','.swc$','\.o$']
+"NERDTree标签文件目录
+"let NERDTreeBookmarksFile='/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
+"let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
+" }}}
+
+Plugin 'Lokaltog/powerline-fonts'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-vinegar'
+Plugin 'Solarized'
+Plugin 'ack.vim'
+Plugin 'rking/ag.vim'
+"erlang
+Plugin 'jimenezrick/vimerl'
+"Golang
+Plugin 'nsf/gocode'
+Plugin 'fatih/vim-go'
+Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'sjl/gundo.vim'
+
+"{{{  airline
+Plugin 'bling/vim-airline'
+" airline
+if !exists("g:airline_symbols")
+  let g:airline_symbols = {}
+endif
+
+
+"  "Track the engine.
+"  Plugin 'SirVer/ultisnips'
+
+"  " Snippets are separated from the engine. Add this if you want them:
+"  Plugin 'honza/vim-snippets'
+
+"  " Trigger configuration. Do not use <tab> if you use
+"  " https://github.com/Valloric/YouCompleteMe.
+"  let g:UltiSnipsExpandTrigger="<tab>"
+"  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"  " If you want :UltiSnipsEdit to split your window.
+"  let g:UltiSnipsEditSplit="vertical"
+
+"let g:airline_theme="powerlineish"
+let g:airline_theme="bubblegum"
+"let g:airline_powerline_fonts=1
+" let g:airline_section_warning = airline#section#create([ "syntastic" ])
+let g:airline#extensions#branch#empty_message  =  "No SCM"
+let g:airline#extensions#whitespace#enabled    =  0
+let g:airline#extensions#syntastic#enabled     =  1
+let g:airline#extensions#tabline#enabled       =  1
+let g:airline#extensions#tabline#tab_nr_type   =  1 " tab number
+let g:airline#extensions#tabline#fnamecollapse =  1 " /a/m/model.rb
+let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
+"}}}
+
+
+" ctrlp config
+"nmap <c-p> :CtrlPMRU<CR>
+map <silent> <leader>1 :CtrlP<CR>
+map <silent> <leader>2 :CtrlPBuffer<CR>
+"过滤文件
+set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+" }}}
+
+call vundle#end()
+filetype plugin indent on
+syntax enable
+
+"if has('gui_running')
+"set background=light
+"else
+"set background=dark
+"endif
+
+"colorscheme herald
+"配色方案
+colorscheme desert  "默认使用
+"colorscheme molokai  
+
+"colorscheme murphy 
+"colorscheme solarized
+"colorscheme tango
+
+"colorscheme solarized
+"colorscheme murphy 
+"中文乱码
+

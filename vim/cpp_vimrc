@@ -14,6 +14,14 @@ if has("mac")
     let neocomplete_mode =0
 endif
 
+map ft :call Search_Word()<CR>:cw<CR>
+function Search_Word()
+    let w = expand("<cword>") " 在当前光标位置抓词
+    execute 'vimgrep /' . w . '/j **/*.cpp'
+    "echo w
+endfunction
+
+
 set rtp+=~/.vim/bundle/Vundle.vim 
 call vundle#begin()  
 
@@ -190,7 +198,7 @@ map <leader>th :tabp<cr>
 " Fast editing of the .vimrc
 "map <leader>e :e! $HOME/.vimrc<cr>
 "edit vimrc file
-map <leader>e :e! $HOME/dotfiles/cpp_vimrc<cr>
+map <leader>e :e! $HOME/dotfiles/vim/cpp_vimrc<cr>
 " fast saving 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
