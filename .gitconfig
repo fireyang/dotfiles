@@ -9,3 +9,5 @@
 	name = fireyang
 	mail = shenhuan007@gmail.com
 	email = shenhuan007@gmail.com
+[push]
+	default = simple
