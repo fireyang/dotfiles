@@ -1,0 +1,4 @@
+alias findcpp="find . -type f -name '*.cpp' | xargs grep -n "
+alias findh="find . -type f -name '*.h' | xargs grep -n "
+alias findx="find . -type f -name '*' | xargs grep -n "
+alias findj="find . -type f -name '*.jce' | xargs grep -n "
