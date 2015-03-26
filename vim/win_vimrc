@@ -9,6 +9,7 @@ au!
 endif
 
 set nocompatible    " be iMproved
+set ignorecase
 filetype off        " required!
 "set rtp +=~/.vim/bundle/vundle/
 "call vundle#rc()
