@@ -1,38 +1,57 @@
+"not a vi
+set nocompatible
+if has("mac")
+    set encoding=utf-8
+endif
+set fileencodings=utf-8
+filetype off
 
-"判断系统是否具有“自动命令”（autocmd）的支持
-if has('autocmd')
-"清除所有的自动命令，以方便调试
-
-au!
-"对于后缀为“.asm”的文件，认为其是微软的 Macro Assembler 格式
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+" switch between YCM and NeoComplete
+let neocomplete_mode = 1
+if has("mac")
+    let neocomplete_mode =0
 endif
 
-set nocompatible    " be iMproved
-filetype off        " required!
-set rtp +=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.vim/bundle/Vundle.vim 
+call vundle#begin()  
 
 
-set encoding=utf-8
-"set fileencodings=utf-8
-"filetype plugin indent on
-syntax on
-"设置行
-set nu
-"换行
-"设置缩进
-set sw=2
-set ts=2
-set softtabstop=2
-set tabstop=2
+" start vundler
+Plugin 'gmarik/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+
+" general configs
 set expandtab
-set cursorline
-set smartindent   "根据当前行的缩进，预测下一行的缩进
-set nocompatible  "使得vim避免了原始vi的一些漏洞和限制
-set autoindent    "使用你当前行的缩进来设置你下一行的缩进
-set showcmd       " display an incomplete command in statusline
+set smarttab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set autoindent
+set ruler
+set hidden
 set ignorecase
+set smartcase
+set showmatch
+"set incsearch
+set hls
+"set relativenumber
+"set ls=2
+"set cursorline
+set nowrap
+set backspace=indent,eol,start
+set completeopt -=preview
+set textwidth=95
+set wildmenu
+set ttyfast
+set noshowmode
+set cmdheight=1
+set nu
+
+" set autoread
+
 
 "在输入命令时列出匹配项目，也就是截图底部的效果
 set wildmenu
@@ -40,18 +59,25 @@ set wildmenu
 "打开自动缩,继承前一行的缩进注释 进
 set autoindent
 "默认情况下手动折叠
-set foldmethod=manual
+"set foldmethod=manual
 "取消高亮
 map <leader>r :noh<cr>
+
 "使用空格代替tab
 set et
 
+"ctags"
+map <C-F12> :!ctags -R . <cr>
 "set guifont=Courier_New:h16:cANSI
 "set guifontwide=YaHei\ Consolas\ Hybrid:h16
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 15 
-"set guifont=Monaco:h13
-"set guifont=Liberation_Mono_for_Powerline:h13
-set guifont=Inconsolata_for_Powerline:h15
+set guifont=Monaco:h12
+"set guifont=SimSun:h8
+"set guifont=Microsoft_Yahei_Mono:h8:cGB2312
+"set guifont=Courier_New:h10:cANSI
+"set guifont=Courier_New:h10
+"set guifont=Bitstream\ Vera\ Sans\ Mono:h11:cANSI 
+"set gfw=YouYuan:h8:cGB2312
 
 " 不要生成swap文件
 set noswapfile
@@ -65,28 +91,16 @@ let g:snips_author = 'FireYang'
 " ESC
 noremap <leader><leader> <Esc>
 
-
 " copy filename 
 map <silent> <leader>. :let @+=expand('%:p').':'.line('.')<CR>
 " copy path
 map <silent> <leader>/ :let @+=expand('%:p:h')<CR>
 
-" ultisnips {{{
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="ii"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir = ["~/.vim/UltiSnips","~/.vim/bundle/vim-snippets/UltiSnips"]
-"let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
-"let g:UltiSnipsSnippetsDir ="~/.vim/UltiSnips"
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-" }}}
 
 "BufExplorer 插件{{{
+"Plugin 'bufexplorer.zip'
 Plugin 'jlanzarotta/bufexplorer'
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 "切换下一缓存区文件
@@ -97,28 +111,20 @@ map <leader>bp :bp<cr>
 map <leader>ba :1,300 bd!<cr>
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
-" NERDTree插件的快捷键
-Plugin 'scrooloose/nerdtree'
-imap <silent> <F7> <esc>:NERDTreeToggle<CR>
-nmap <silent> <F7> :NERDTreeToggle<CR>
-nnoremap <silent> <backspace> :BD<cr>
-nnoremap <silent> <s-backspace> :BD!<cr>
-" Prevent :bd inside NERDTree buffer
-au FileType nerdtree cnoreabbrev <buffer> bd <nop>
-au FileType nerdtree cnoreabbrev <buffer> BD <nop>
-"NERDTree过滤文件
-let NERDTreeIgnore=['\.svn$','.fla$','.doc$','.swc$']
-"NERDTree标签文件目录
-let NERDTreeBookmarksFile='/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
-" }}}
+
+
 
 " 窗口区域切换,F5 后 ↑↓←→  来切换
+"imap <silent> <C-h> <esc><C-W><left>
 vmap <silent> <C-h> <esc><C-W><left>
 nmap <silent> <C-h> <C-W><left>
+"imap <silent> <C-l> <esc><C-W><right>
 vmap <silent> <C-l> <esc><C-W><right>
 nmap <silent> <C-l> <C-W><right>
+"imap <silent> <C-k> <esc><C-W><up>
 vmap <silent> <C-k> <esc><C-W><up>
 nmap <silent> <C-k> <C-W><up>
+"imap <silent> <C-j> <esc><C-W><down>
 vmap <silent> <C-j> <esc><C-W><down>
 nmap <silent> <C-j> <C-W><down>
 
@@ -138,9 +144,9 @@ imap <A-r> <esc>:%s/
 vmap <A-r> <esc>:%s/
 nmap <A-r> :%s/
 " ctrl + o
-imap <C-o> <C-O>:e
-vmap <C-o> <esc>:e
-nmap <C-o> :e 
+"imap <C-o> <C-O>:e
+"vmap <C-o> <esc>:e
+"nmap <C-o> :e 
 "}}}
 
 if version >603
@@ -168,7 +174,7 @@ set nowrap
 
 
 "Insert now date
-map <leader>t :echo strftime("%Y-%m-%d %a %I:%M %p")<cr>
+"map <F3> :echo strftime("%Y-%m-%d %a %I:%M %p")<cr>
 
 " QuickClose
 map <leader>u :ZoomWin<cr>
@@ -200,59 +206,49 @@ set grepprg=/bin/grep\ -n
 "切换到当前文件目录
 map <leader>cd :cd %:p:h<CR>  
 
-" FuzzyFinder
-"Plugin 'L9'
-"Plugin 'FuzzyFinder'
-" FuF customisations "{{{
-"let g:fuf_modesDisable = []
-"nnoremap <leader>h :FufHelp<CR>
-"nnoremap <leader>1  :FufLine<CR>
-"备份
-"nnoremap <leader>2  :FufTag<CR>
-"nnoremap <leader>2  :FufFileWithCurrentBufferDir<CR>
-"nnoremap <leader>@  :FufFile<CR>
-nnoremap <leader>2  :FufBuffer<CR>
-"nnoremap <leader>4  :FufDirWithCurrentBufferDir<CR>
-"nnoremap <leader>$  :FufDir<CR>
-"nnoremap <leader>5  :FufChangeList<CR>
-nnoremap <leader>3  :FufMruFile<CR>
-"nnoremap <leader>7  :FufLine<CR>
-"nnoremap <leader>9  :FufTaggedFile<CR>
-"   }}}
 
+" NERDTree插件的快捷键
+Plugin 'scrooloose/nerdtree'
+imap <silent> <F7> <esc>:NERDTreeToggle<CR>
+nmap <silent> <F7> :NERDTreeToggle<CR>
+" bufkill bd's: really do not mess with NERDTree buffer
+nnoremap <silent> <backspace> :BD<cr>
+nnoremap <silent> <s-backspace> :BD!<cr>
+
+" Prevent :bd inside NERDTree buffer
+au FileType nerdtree cnoreabbrev <buffer> bd <nop>
+au FileType nerdtree cnoreabbrev <buffer> BD <nop>
+"NERDTree过滤文件
+let NERDTreeIgnore=['.svn$','.fla$','.doc$','.swc$','\.o$']
+"NERDTree标签文件目录
+"let NERDTreeBookmarksFile='/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
+"let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
+" }}}
+
+Plugin 'Lokaltog/powerline-fonts'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'unite.vim'
-"{{{ Git
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-let g:gitgutter_enabled = 1
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 0
-nnoremap <leader>G mG:Git! 
-nnoremap <leader>g :Git 
-"}}}
-"{{{ ag.vim
+Plugin 'tpope/vim-vinegar'
+Plugin 'Solarized'
+Plugin 'ack.vim'
 Plugin 'rking/ag.vim'
-if executable("ag")
-  let g:ackprg = "ag --nogroup --column"
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-nnoremap <leader>A :!ag 
-nnoremap <leader>a :Ag! 
-"}}}
+"erlang
+Plugin 'oscarh/vimerl'
+"Golang
+Plugin 'nsf/gocode'
+Plugin 'fatih/vim-go'
 
-
-"{{{  vim-airline
+"{{{  airline
 Plugin 'bling/vim-airline'
-if !exists('g:airline_symbols')
+" airline
+if !exists("g:airline_symbols")
   let g:airline_symbols = {}
 endif
 
-let g:airline_theme="powerlineish"
-let g:airline_powerline_fonts=1
+"let g:airline_theme="powerlineish"
+let g:airline_theme="bubblegum"
+"let g:airline_powerline_fonts=1
 " let g:airline_section_warning = airline#section#create([ "syntastic" ])
 let g:airline#extensions#branch#empty_message  =  "No SCM"
 let g:airline#extensions#whitespace#enabled    =  0
@@ -264,56 +260,40 @@ let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
 "}}}
 
 
-Plugin 'ack.vim'
-nmap <leader>a :Ack<space>
-
-"Tagbar{{{
-Plugin 'taglist.vim'
-Plugin 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
-"nmap <leader>] :TagbarToggle<CR>
-" }}}
-
-"Ctrlp.vim{{{
-Plugin 'kien/ctrlp.vim'
-nmap <leader>1 :CtrlP<cr>
-nmap <leader>2 :CtrlPBuffer<CR>
-
+" ctrlp config
+"nmap <c-p> :CtrlPMRU<CR>
+map <silent> <leader>1 :CtrlP<CR>
+map <silent> <leader>2 :CtrlPBuffer<CR>
 "过滤文件
 set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|a|png|ico)$',
+  \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=15
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
-let g:ctrlp_follow_symlinks=1
+
 " }}}
 
-
-" Go语言相关{{{
-"Plugin 'cespare/vim-golang'
-"自动补全
-"Plugin 'Blackrush/vim-gocode'
-"}}}
-
-syntax enable
 call vundle#end()
 filetype plugin indent on
+syntax enable
 
-" gui settings
-if (&t_Co == 256 || has('gui_running'))
-  if ($TERM_PROGRAM == 'iTerm.app')
-    colorscheme solarized
-  else
-    colorscheme desert
-  endif
-endif
+"if has('gui_running')
+"set background=light
+"else
+"set background=dark
+"endif
+
+"colorscheme herald
+"配色方案
+colorscheme desert  "默认使用
+
+"colorscheme murphy 
+"colorscheme solarized
+"colorscheme tango
+
+"colorscheme solarized
+"colorscheme murphy 
 "中文乱码
-"set fileencodings=ucs-bom,utf-8,chinese,cp936 
 

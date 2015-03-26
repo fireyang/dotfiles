@@ -49,4 +49,4 @@ ZSH_THEME="zhann"
 plugins=(git golang tmux sudo github z)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.local_zsh
+source ~/.zshrc_local
