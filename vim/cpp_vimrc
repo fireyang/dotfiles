@@ -4,8 +4,10 @@ if has("mac")
     set encoding=utf-8
 elseif has("unix")
     set encoding=utf-8
+    "set enc=utf8
 endif
-set fileencodings=utf-8
+set fileencodings=utf-8,gbk,gb2312,gb18030,cp936
+"set fileencodings=utf-8
 filetype off
 
 " switch between YCM and NeoComplete
@@ -14,12 +16,6 @@ if has("mac")
     let neocomplete_mode =0
 endif
 
-map ft :call Search_Word()<CR>:cw<CR>
-function Search_Word()
-    let w = expand("<cword>") " 在当前光标位置抓词
-    execute 'vimgrep /' . w . '/j **/*.cpp'
-    "echo w
-endfunction
 
 
 set rtp+=~/.vim/bundle/Vundle.vim 
@@ -34,10 +30,11 @@ Plugin 'ctrlp.vim'
 "Plugin 'tpope/vim-fugitive'
 
 " general configs
-set expandtab
-set smarttab
+"set noexpandtab
+"set softtabstop=4 
+"set smarttab
+"set list
 set shiftwidth=4
-set softtabstop=4
 set tabstop=4
 set autoindent
 set ruler
@@ -102,13 +99,19 @@ noremap <leader><leader> <Esc>
 " copy filename 
 map <silent> <leader>. :let @+=expand('%:p').':'.line('.')<CR>
 " copy path
-map <silent> <leader>/ :let @+=expand('%:p:h')<CR>
+map <silent> <leader>/ :let @+=expand('%:p:h')<nR>
 
+map <leader>ft :call Search_Word()<CR>:cw<CR>
+function Search_Word()
+    let w = expand("<cword>") " 在当前光标位置抓词
+    execute 'vimgrep /' . w . '/j **/*.{[ch],cpp}'
+    "echo w
+endfunction
 
 "BufExplorer 插件{{{
 "Plugin 'bufexplorer.zip'
 Plugin 'jlanzarotta/bufexplorer'
-" Close the current buffer
+" Close the current bufker
 map <leader>bd :Bclose<cr>
 "切换下一缓存区文件
 map <leader>bn :bn<cr>
@@ -116,8 +119,6 @@ map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
 
 
 
@@ -151,9 +152,9 @@ imap <A-r> <esc>:%s/
 vmap <A-r> <esc>:%s/
 nmap <A-r> :%s/
 " ctrl + o
-imap <C-o> <C-O>:e
-vmap <C-o> <esc>:e
-nmap <C-o> :e 
+"imap <C-o> <C-O>:e
+"vmap <C-o> <esc>:e
+"nmap <C-o> :e 
 "}}}
 
 if version >603
@@ -188,6 +189,7 @@ map <leader>u :ZoomWin<cr>
 map <leader><leader>u :close<cr>
 " VSplit
 map <leader>vs :vsplit<cr><C-l>
+map <leader>sp :split<cr><C-l>
 " Tab configuration
 map <leader>tn :tabnew %<cr>
 map <leader>te :tabedit 
@@ -245,7 +247,8 @@ Plugin 'rking/ag.vim'
 Plugin 'jimenezrick/vimerl'
 "Golang
 "Plugin 'nsf/gocode'
-"Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
+Plugin 'uarun/vim-protobuf'
 
 "{{{  airline
 Plugin 'bling/vim-airline'
@@ -285,8 +288,18 @@ let g:ctrlp_custom_ignore = {
 " }}}
 "
 " {{{ c.vim
-"Plugin 'vim-scripts/c.vim'
+Plugin 'vim-scripts/c.vim'
+Plugin 'vim-jp/vim-cpp'
+Plugin 'vim-scripts/a.vim'
+map <leader>a :A<cr>
+map <leader>b :AV<cr>
 " }}}
+
+Plugin 'tenghui0425/jce-highlight'
+augroup jcefile  
+    au! BufRead,BufNewFile *.jce setfiletype jce  
+    au! BufRead,BufNewFile *.jce set syntax=jce  
+augroup end  
 
 
 call vundle#end()
@@ -311,3 +324,4 @@ colorscheme desert  "默认使用
 "colorscheme murphy 
 "中文乱码
 
+set noexpandtab

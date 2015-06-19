@@ -5,6 +5,9 @@
 	co = checkout
 	ci = commit
 	br = branch
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	ba = branch
+	me = merge
 [user]
 	name = fireyang
 	mail = shenhuan007@gmail.com
