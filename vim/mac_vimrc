@@ -191,7 +191,7 @@ map <leader>th :tabp<cr>
 " Fast editing of the .vimrc
 "map <leader>e :e! $HOME/.vimrc<cr>
 "edit vimrc file
-map <leader>e :exec "edit" '~/.vimrc'<cr>
+map <leader>e :exec "edit" '~/dotfiles/vim/mac_vimrc'<cr>
 " fast saving 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
@@ -246,6 +246,13 @@ if !exists("g:airline_symbols")
   let g:airline_symbols = {}
 endif
 
+function Search_Word()
+    let w = expand("<cword>") " 在当前光标位置抓词
+    execute 'vimgrep /' . w . '/j **/*'
+    "echo w
+endfunction
+map <leader>ft :call Search_Word()<CR>:cw<CR>
+
 "let g:airline_theme="powerlineish"
 let g:airline_theme="bubblegum"
 "let g:airline_powerline_fonts=1
@@ -278,6 +285,7 @@ let g:ctrlp_custom_ignore = {
 call vundle#end()
 filetype plugin indent on
 syntax enable
+
 
 "if has('gui_running')
 "set background=light
