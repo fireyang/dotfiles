@@ -19,7 +19,7 @@ call vundle#begin()
 " start vundler
 Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
@@ -96,6 +96,12 @@ map <silent> <leader>. :let @+=expand('%:p').':'.line('.')<CR>
 " copy path
 map <silent> <leader>/ :let @+=expand('%:p:h')<CR>
 
+map <leader>ft :call Search_Word()<CR>:cw<CR>
+function Search_Word()
+    let w = expand("<cword>") " 在当前光标位置抓词
+    execute 'vimgrep /' . w . '/j **/*.{[ch],cpp}'
+    "echo w
+endfunction
 
 "BufExplorer 插件{{{
 "Plugin 'bufexplorer.zip'
@@ -209,8 +215,10 @@ map <leader>cd :cd %:p:h<CR>
 
 " NERDTree插件的快捷键
 Plugin 'scrooloose/nerdtree'
-imap <silent> <F7> <esc>:NERDTreeToggle<CR>
-nmap <silent> <F7> :NERDTreeToggle<CR>
+"imap <silent> <F7> <esc>:NERDTreeToggle<CR>
+"nmap <silent> <F7> :NERDTreeToggle<CR>
+imap <leader>nt <esc>:NERDTreeToggle<CR>
+nmap <leader>nt :NERDTreeToggle<CR>
 " bufkill bd's: really do not mess with NERDTree buffer
 nnoremap <silent> <backspace> :BD<cr>
 nnoremap <silent> <s-backspace> :BD!<cr>
@@ -230,11 +238,14 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-vinegar'
-Plugin 'Solarized'
-Plugin 'ack.vim'
-Plugin 'rking/ag.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'mileszs/ack.vim'
+let g:ack_default_options =
+            \ " -s -H --nocolor --nogroup --column --smart-case --follow"
+"Plugin 'rking/ag.vim'
 "erlang
 Plugin 'oscarh/vimerl'
+Plugin 'elixir-lang/vim-elixir'
 "Golang
 Plugin 'nsf/gocode'
 Plugin 'fatih/vim-go'
@@ -265,7 +276,7 @@ let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
 map <silent> <leader>1 :CtrlP<CR>
 map <silent> <leader>2 :CtrlPBuffer<CR>
 "过滤文件
-set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
+set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe,*.beam
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -274,6 +285,22 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " }}}
+"
+Plugin 'uarun/vim-protobuf'
+
+" {{{ c.vim
+Plugin 'vim-scripts/c.vim'
+Plugin 'vim-jp/vim-cpp'
+Plugin 'vim-scripts/a.vim'
+map <leader>a :A<cr>
+map <leader>b :AV<cr>
+" }}}
+
+" {{{  typescript
+Plugin 'leafgarland/typescript-vim'
+" }}}
+"
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on
