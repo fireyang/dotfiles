@@ -11,10 +11,13 @@ let neocomplete_mode = 1
 if has("mac")
     let neocomplete_mode =0
 endif
+" Source the vimrc file after saving it
+if has("autocmd")
+    autocmd bufwritepost .vimrc source $MYVIMRC
+endif
 
 set rtp+=~/.vim/bundle/Vundle.vim 
 call vundle#begin()  
-
 
 " start vundler
 Plugin 'gmarik/Vundle.vim'
@@ -302,6 +305,11 @@ Plugin 'leafgarland/typescript-vim'
 "
 Plugin 'rizzatti/dash.vim'
 
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+
 call vundle#end()
 filetype plugin indent on
 syntax enable
@@ -315,12 +323,3 @@ syntax enable
 "colorscheme herald
 "配色方案
 colorscheme desert  "默认使用
-
-"colorscheme murphy 
-"colorscheme solarized
-"colorscheme tango
-
-"colorscheme solarized
-"colorscheme murphy 
-"中文乱码
-
