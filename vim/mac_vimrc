@@ -250,8 +250,9 @@ let g:ack_default_options =
 Plugin 'oscarh/vimerl'
 Plugin 'elixir-lang/vim-elixir'
 "Golang
-Plugin 'nsf/gocode'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
+let g:syntastic_go_checkers = []
 
 "{{{  airline
 Plugin 'bling/vim-airline'
@@ -276,16 +277,17 @@ let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
 
 " ctrlp config
 "nmap <c-p> :CtrlPMRU<CR>
-map <silent> <leader>1 :CtrlP<CR>
-map <silent> <leader>2 :CtrlPBuffer<CR>
+map <silent> <leader>1 :CtrlPCurWD<CR>
+map <silent> <leader>2 :CtrlP<CR>
+map <silent> <leader>3 :CtrlPBuffer<CR>
 "过滤文件
 set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe,*.beam
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+let g:ctrlp_custom_ignore = { 
+     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+     \ 'file': '\v\.(exe|so|dll)$',
+     \ 'link': 'some_bad_symbolic_links',
+     \ }
 
 " }}}
 "
