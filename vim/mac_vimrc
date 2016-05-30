@@ -13,7 +13,7 @@ if has("mac")
 endif
 " Source the vimrc file after saving it
 if has("autocmd")
-    autocmd bufwritepost .vimrc source $MYVIMRC
+    autocmd! bufwritepost .vimrc source $MYVIMRC
 endif
 
 set rtp+=~/.vim/bundle/Vundle.vim 
@@ -25,6 +25,22 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+
+" Split Management
+" " ====>
+set splitbelow
+set splitright
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" ====
+
+" Line endings
+set fileformats=unix
+set ff=unix
+
 
 " general configs
 set expandtab
@@ -71,15 +87,6 @@ set et
 
 "ctags"
 map <C-F12> :!ctags -R . <cr>
-"set guifont=Courier_New:h16:cANSI
-"set guifontwide=YaHei\ Consolas\ Hybrid:h16
-"set guifont=Bitstream\ Vera\ Sans\ Mono\ 15 
-set guifont=Monaco:h12
-"set guifont=SimSun:h8
-"set guifont=Microsoft_Yahei_Mono:h8:cGB2312
-"set guifont=Courier_New:h10:cANSI
-"set guifont=Courier_New:h10
-"set guifont=Bitstream\ Vera\ Sans\ Mono:h11:cANSI 
 "set gfw=YouYuan:h8:cGB2312
 
 " 不要生成swap文件
@@ -93,6 +100,8 @@ let mapleader = ","
 let g:snips_author = 'FireYang'
 " ESC
 noremap <leader><leader> <Esc>
+" Open folder in Terminal
+map <leader>. :!open -a Terminal .<cr>
 
 " copy filename 
 map <silent> <leader>. :let @+=expand('%:p').':'.line('.')<CR>
@@ -166,8 +175,6 @@ endi
 "切换窗体，并最大化
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
-"设置状态
-set laststatus=2
 "设置命令行2行
 set cmdheight=2
 "设置缓存
@@ -248,31 +255,22 @@ let g:ack_default_options =
 "Plugin 'rking/ag.vim'
 "erlang
 Plugin 'oscarh/vimerl'
+" Elixir
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'mattreduce/vim-mix'
+Plugin 'mmorearty/elixir-ctags'
+au BufRead,BufNewFile *.ex set filetype=elixir
+au BufRead,BufNewFile *.exs set filetype=elixir
+nnoremap <leader>t :!mix test --no-color %<CR>
+
+
+" HTML5
+Plugin 'othree/html5.vim'
+
 "Golang
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
 let g:syntastic_go_checkers = []
-
-"{{{  airline
-Plugin 'bling/vim-airline'
-" airline
-if !exists("g:airline_symbols")
-  let g:airline_symbols = {}
-endif
-
-"let g:airline_theme="powerlineish"
-let g:airline_theme="bubblegum"
-"let g:airline_powerline_fonts=1
-" let g:airline_section_warning = airline#section#create([ "syntastic" ])
-let g:airline#extensions#branch#empty_message  =  "No SCM"
-let g:airline#extensions#whitespace#enabled    =  0
-let g:airline#extensions#syntastic#enabled     =  1
-let g:airline#extensions#tabline#enabled       =  1
-let g:airline#extensions#tabline#tab_nr_type   =  1 " tab number
-let g:airline#extensions#tabline#fnamecollapse =  1 " /a/m/model.rb
-let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
-"}}}
 
 
 " ctrlp config
@@ -305,12 +303,51 @@ map <leader>b :AV<cr>
 Plugin 'leafgarland/typescript-vim'
 " }}}
 "
-Plugin 'rizzatti/dash.vim'
-
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
+
+" Cool tab completion stuff
+Plugin 'ervandew/supertab'
+set wildmenu
+set wildmode=list:longest,full
+
+
+" ==== DECORATION ====>>
+" Some nice themes
+Plugin 'gmarik/ingretu'
+Plugin 'wombat256.vim'
+Plugin 'croaker/mustang-vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'adlawson/vim-sorcerer'
+Plugin 'vim-scripts/strange'
+Plugin 'rcdilorenzo/vim-colors-pencil'
+
+" Font (download for compatility with airline)
+" set guifont=Sauce\ Code\ Powerline:h13
+set guifont=Hack:h13
+
+" Theme
+set background=dark
+
+
+" Color Scheme
+" colorscheme gruvbox
+
+" <<==== DECORATION ====
+
+" ====== STATUSBAR ====>>
+ " Turn on statusbar
+ set ruler
+
+" Always show the statusline
+ set laststatus=2
+ Plugin 'vim-airline/vim-airline'
+ Plugin 'vim-airline/vim-airline-themes'
+
+" <<==== STATUSBAR ====
+
 
 call vundle#end()
 filetype plugin indent on
