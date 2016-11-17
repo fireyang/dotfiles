@@ -157,16 +157,16 @@ nnoremap <up> gk
 set backspace=indent,eol,start
 "}}}
 
-if has('mouse')
-    set mouse=a
-    if has('mouse_sgr')
-        set ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
-        set ttymouse=sgr
-    else
-        set ttymouse=xterm2
-    endif
-endif
+"   if has('mouse')
+"       set mouse=a
+"       if has('mouse_sgr')
+"           set ttymouse=sgr
+"       elseif v:version > 703 || v:version is 703 && has('patch632')
+"           set ttymouse=sgr
+"       else
+"           set ttymouse=xterm2
+"       endif
+"   endif
 
 
 " paste  粘贴时忽略前置tab
@@ -290,6 +290,8 @@ set grepprg=/bin/grep\ -n
 "切换到当前文件目录
 map <leader>cd :cd %:p:h<CR>
 
+
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " 注释
 Plugin 'scrooloose/nerdcommenter'
 " Add spaces after comment delimiters by default
