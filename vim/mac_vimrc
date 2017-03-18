@@ -330,7 +330,7 @@ let NERDTreeIgnore=['.svn$','.fla$','.doc$','.swc$','\.o$']
 " }}}
 
 Plugin 'Lokaltog/powerline-fonts'
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-vinegar'
@@ -356,7 +356,7 @@ Plugin 'c-brenn/phoenix.vim'
 
 
 " HTML5
-Plugin 'othree/html5.vim'
+" Plugin 'othree/html5.vim'
 
 "Golang
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
@@ -364,7 +364,7 @@ Plugin 'fatih/vim-go'
 let g:syntastic_go_checkers = []
 
 " elm
-Plugin 'elmcast/elm-vim'
+" Plugin 'elmcast/elm-vim'
 
 " ctrlp config
 Plugin 'ctrlpvim/ctrlp.vim'
