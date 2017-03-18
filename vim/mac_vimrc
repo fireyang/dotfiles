@@ -4,24 +4,68 @@ if has("mac")
     set encoding=utf-8
 endif
 set fileencodings=utf-8
+scriptencoding utf-8
+set fileformats=unix,dos,mac
+" 双倍字符宽度
+set ambiwidth=double
 filetype off
+
 
 " switch between YCM and NeoComplete
 let neocomplete_mode = 1
 if has("mac")
     let neocomplete_mode =0
 endif
-
-set rtp+=~/.vim/bundle/Vundle.vim 
-call vundle#begin()  
-
+" Source the vimrc file after saving it
+if has("autocmd")
+    autocmd! bufwritepost .vimrc source $MYVIMRC
+endif
+"if has('vim_starting')
+" install vundle
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
+    echo "install Vundle..."
+    :call system("git clone git://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim")
+endif
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"endif
 
 " start vundler
 Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+
+Plugin 'itchyny/lightline.vim'
+set laststatus=2
+set showmode
+set showcmd
+Plugin 'tomasr/molokai'
+"colorscheme molokai " カラースキームにmolokaiを設定する
+
+set t_Co=256 " iTerm2など既に256色環境なら無くても良い
+
+" 显示全角半角
+Plugin 'bronson/vim-trailing-whitespace'
+
+" 缩进可视化
+Plugin 'Yggdroot/indentLine'
+
+" Split Management
+" " ====>
+set splitbelow
+set splitright
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" ====
+
+" Line endings
+set fileformats=unix
+set ff=unix
+
 
 " general configs
 set expandtab
@@ -32,10 +76,11 @@ set tabstop=4
 set autoindent
 set ruler
 set hidden
-set ignorecase
 set smartcase
+set smartindent
 set showmatch
-"set incsearch
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 set hls
 "set relativenumber
 "set ls=2
@@ -44,17 +89,15 @@ set nowrap
 set backspace=indent,eol,start
 set completeopt -=preview
 set textwidth=95
-set wildmenu
 set ttyfast
-set noshowmode
 set cmdheight=1
-set nu
+set nu " 显示行号
+set cursorline " 高亮当前行
 
 " set autoread
 
-
 "在输入命令时列出匹配项目，也就是截图底部的效果
-set wildmenu
+"set wildmenu
 
 "打开自动缩,继承前一行的缩进注释 进
 set autoindent
@@ -68,16 +111,8 @@ set et
 
 "ctags"
 map <C-F12> :!ctags -R . <cr>
-"set guifont=Courier_New:h16:cANSI
-"set guifontwide=YaHei\ Consolas\ Hybrid:h16
-"set guifont=Bitstream\ Vera\ Sans\ Mono\ 15 
-set guifont=Monaco:h12
-"set guifont=SimSun:h8
-"set guifont=Microsoft_Yahei_Mono:h8:cGB2312
-"set guifont=Courier_New:h10:cANSI
-"set guifont=Courier_New:h10
-"set guifont=Bitstream\ Vera\ Sans\ Mono:h11:cANSI 
 "set gfw=YouYuan:h8:cGB2312
+
 
 " 不要生成swap文件
 set noswapfile
@@ -90,12 +125,63 @@ let mapleader = ","
 let g:snips_author = 'FireYang'
 " ESC
 noremap <leader><leader> <Esc>
+" Open folder in Terminal
+map <leader>. :!open -a Terminal .<cr>
 
-" copy filename 
+" copy filename
 map <silent> <leader>. :let @+=expand('%:p').':'.line('.')<CR>
 " copy path
 map <silent> <leader>/ :let @+=expand('%:p:h')<CR>
 
+" search相关 {{{{
+set incsearch
+set ignorecase
+set hlsearch
+" 取消查找
+nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
+map <leader>ft :call Search_Word()<CR>:cw<CR>
+if !exists('*Search_Word')
+    function Search_Word()
+        let w = expand("<cword>") " 在当前光标位置抓词
+        execute 'vimgrep /' . w . '/j **/*.{[ch],cpp}'
+        "echo w
+    endfunction
+endif
+"}}}}
+
+" 移动 {{{
+nnoremap j gj
+nnoremap k gk
+nnoremap <down> gj
+nnoremap <up> gk
+set backspace=indent,eol,start
+"}}}
+
+"   if has('mouse')
+"       set mouse=a
+"       if has('mouse_sgr')
+"           set ttymouse=sgr
+"       elseif v:version > 703 || v:version is 703 && has('patch632')
+"           set ttymouse=sgr
+"       else
+"           set ttymouse=xterm2
+"       endif
+"   endif
+
+
+" paste  粘贴时忽略前置tab
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
 
 "BufExplorer 插件{{{
 "Plugin 'bufexplorer.zip'
@@ -129,7 +215,7 @@ vmap <silent> <C-j> <esc><C-W><down>
 nmap <silent> <C-j> <C-W><down>
 
 inoremap <C-z> <C-O>u
-nnoremap <C-z> u    
+nnoremap <C-z> u
 " ctrl + y
 "inoremap <C-y> <C-O><C-R>
 "nnoremap <C-y> <C-R>
@@ -146,7 +232,7 @@ nmap <A-r> :%s/
 " ctrl + o
 "imap <C-o> <C-O>:e
 "vmap <C-o> <esc>:e
-"nmap <C-o> :e 
+"nmap <C-o> :e
 "}}}
 
 if version >603
@@ -157,8 +243,6 @@ endi
 "切换窗体，并最大化
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
-"设置状态
-set laststatus=2
 "设置命令行2行
 set cmdheight=2
 "设置缓存
@@ -183,7 +267,7 @@ map <leader><leader>u :close<cr>
 map <leader>vs :vsplit<cr><C-l>
 " Tab configuration
 map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit 
+map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>tl :tabN<cr>
@@ -191,8 +275,8 @@ map <leader>th :tabp<cr>
 " Fast editing of the .vimrc
 "map <leader>e :e! $HOME/.vimrc<cr>
 "edit vimrc file
-map <leader>e :exec "edit" '~/dotfiles/vim/mac_vimrc'<cr>
-" fast saving 
+map <leader>e :exec "edit" '~/.vimrc'<cr>
+" fast saving
 map <leader>w :w<cr>
 map <leader>q :q<cr>
 
@@ -202,15 +286,35 @@ map <leader>q :q<cr>
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
 set grepprg=/bin/grep\ -n
 
-"switch to current directory 
+"switch to current directory
 "切换到当前文件目录
-map <leader>cd :cd %:p:h<CR>  
+map <leader>cd :cd %:p:h<CR>
 
+
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" 注释
+Plugin 'scrooloose/nerdcommenter'
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
 
 " NERDTree插件的快捷键
 Plugin 'scrooloose/nerdtree'
-imap <silent> <F7> <esc>:NERDTreeToggle<CR>
-nmap <silent> <F7> :NERDTreeToggle<CR>
+"imap <silent> <F7> <esc>:NERDTreeToggle<CR>
+"nmap <silent> <F7> :NERDTreeToggle<CR>
+imap <leader>nt <esc>:NERDTreeToggle<CR>
+nmap <leader>nt :NERDTreeToggle<CR>
 " bufkill bd's: really do not mess with NERDTree buffer
 nnoremap <silent> <backspace> :BD<cr>
 nnoremap <silent> <s-backspace> :BD!<cr>
@@ -230,21 +334,21 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-vinegar'
-Plugin 'Solarized'
-Plugin 'ack.vim'
-Plugin 'rking/ag.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'mileszs/ack.vim'
+let g:ack_default_options =
+            \ " -s -H --nocolor --nogroup --column --smart-case --follow"
+"Plugin 'rking/ag.vim'
 "erlang
 Plugin 'oscarh/vimerl'
-"Golang
-Plugin 'nsf/gocode'
-Plugin 'fatih/vim-go'
+" Elixir
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mattreduce/vim-mix'
+Plugin 'mmorearty/elixir-ctags'
+au BufRead,BufNewFile *.ex set filetype=elixir
+au BufRead,BufNewFile *.exs set filetype=elixir
+nnoremap <leader>t :!mix test --no-color %<CR>
 
-"{{{  airline
-Plugin 'bling/vim-airline'
-" airline
-if !exists("g:airline_symbols")
-  let g:airline_symbols = {}
-endif
 
 function Search_Word()
     let w = expand("<cword>") " 在当前光标位置抓词
@@ -253,34 +357,97 @@ function Search_Word()
 endfunction
 map <leader>ft :call Search_Word()<CR>:cw<CR>
 
-"let g:airline_theme="powerlineish"
-let g:airline_theme="bubblegum"
-"let g:airline_powerline_fonts=1
-" let g:airline_section_warning = airline#section#create([ "syntastic" ])
-let g:airline#extensions#branch#empty_message  =  "No SCM"
-let g:airline#extensions#whitespace#enabled    =  0
-let g:airline#extensions#syntastic#enabled     =  1
-let g:airline#extensions#tabline#enabled       =  1
-let g:airline#extensions#tabline#tab_nr_type   =  1 " tab number
-let g:airline#extensions#tabline#fnamecollapse =  1 " /a/m/model.rb
-let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
-"}}}
-
+" elm
+" Plugin 'elmcast/elm-vim'
 
 " ctrlp config
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'suy/vim-ctrlp-commandline'
 "nmap <c-p> :CtrlPMRU<CR>
-map <silent> <leader>1 :CtrlP<CR>
-map <silent> <leader>2 :CtrlPBuffer<CR>
+let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_types = ['fil']
+let g:ctrlp_extensions = ['funky', 'commandline'] 
+
+" CtrlPCommandLine
+command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
+" CtrlPFunky
+let g:ctrlp_funky_matchtype = 'path' 
+
+map <silent> <leader>1 :CtrlPCurWD<CR>
+map <silent> <leader>2 :CtrlP<CR>
+map <silent> <leader>3 :CtrlPBuffer<CR>
 "过滤文件
-set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
+set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe,*.beam
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+     \ 'file': '\v\.(exe|so|dll)$',
+     \ 'link': 'some_bad_symbolic_links',
+     \ }
 
 " }}}
+"
+Plugin 'uarun/vim-protobuf'
+
+" {{{ c.vim
+Plugin 'vim-scripts/c.vim'
+Plugin 'vim-jp/vim-cpp'
+Plugin 'vim-scripts/a.vim'
+map <leader>a :A<cr>
+map <leader>b :AV<cr>
+" }}}
+
+" {{{  typescript
+Plugin 'leafgarland/typescript-vim'
+" }}}
+"
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+
+" Cool tab completion stuff
+Plugin 'ervandew/supertab'
+set wildmenu
+"set wildmode=list:longest,full
+
+
+" ==== DECORATION ====>>
+" Some nice themes
+Plugin 'gmarik/ingretu'
+Plugin 'wombat256.vim'
+Plugin 'croaker/mustang-vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'adlawson/vim-sorcerer'
+Plugin 'vim-scripts/strange'
+Plugin 'rcdilorenzo/vim-colors-pencil'
+
+" Font (download for compatility with airline)
+" set guifont=Sauce\ Code\ Powerline:h13
+set guifont=Hack:h13
+
+" Theme
+set background=dark
+
+
+" Color Scheme
+" colorscheme gruvbox
+
+" <<==== DECORATION ====
+
+" ====== STATUSBAR ====>>
+ " Turn on statusbar
+ set ruler
+
+" Always show the statusline
+ set laststatus=2
+ Plugin 'vim-airline/vim-airline'
+ Plugin 'vim-airline/vim-airline-themes'
+
+" <<==== STATUSBAR ====
+
 
 call vundle#end()
 filetype plugin indent on
@@ -295,13 +462,5 @@ syntax enable
 
 "colorscheme herald
 "配色方案
-colorscheme desert  "默认使用
-
-"colorscheme murphy 
-"colorscheme solarized
-"colorscheme tango
-
-"colorscheme solarized
-"colorscheme murphy 
-"中文乱码
-
+"colorscheme desert  "默认使用
+colorscheme molokai " カラースキームにmolokaiを設定する

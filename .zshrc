@@ -48,5 +48,8 @@ ZSH_THEME="zhann"
 #plugins=(git osx autojump python node brew)
 plugins=(git golang tmux sudo github z)
 
+alias purgeAllBuilds='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
+
 source $ZSH/oh-my-zsh.sh
 source ~/.zshrc_local
+

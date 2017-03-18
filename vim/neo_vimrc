@@ -1,0 +1,82 @@
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+" echo "test"
+
+set nocompatible
+filetype plugin indent off
+
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" echo "test222"
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+"
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'flazz/vim-colorschemes'
+
+" general configs
+set expandtab
+set smarttab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set autoindent
+set ruler
+set hidden
+set ignorecase
+set smartcase
+set showmatch
+"set incsearch
+set hls
+"set relativenumber
+"set ls=2
+"set cursorline
+set nowrap
+set backspace=indent,eol,start
+set completeopt -=preview
+set textwidth=95
+set wildmenu
+set ttyfast
+set noshowmode
+set cmdheight=1
+set nu
+
+" 不要生成swap文件
+set noswapfile
+"隐藏菜单栏
+set guioptions-=m
+"隐藏工具栏
+set guioptions-=T
+"set mapleader
+let mapleader = ","
+let g:snips_author = 'FireYang'
+" ESC
+noremap <leader><leader> <Esc>
+"
+colorscheme desert  "默认使用
+
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
