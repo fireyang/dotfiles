@@ -8,7 +8,9 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="dpoggi"
-ZSH_THEME="zhann"
+#ZSH_THEME="zhann"
+ZSH_THEME="gallois"
+# ZSH_THEME="taktoa"
 #ZSH_THEME="miloshadzic"
 
 
@@ -46,7 +48,9 @@ ZSH_THEME="zhann"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git osx autojump python node brew)
-plugins=(git golang tmux sudo github z)
+plugins=(git osx git-prompt history-substring-search tmux github z)
+
+COMPLETION_WAITING_DOTS="true"
 
 alias purgeAllBuilds='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 

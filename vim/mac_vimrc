@@ -344,10 +344,15 @@ Plugin 'oscarh/vimerl'
 " Elixir
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'mattreduce/vim-mix'
-Plugin 'mmorearty/elixir-ctags'
-au BufRead,BufNewFile *.ex set filetype=elixir
-au BufRead,BufNewFile *.exs set filetype=elixir
-nnoremap <leader>t :!mix test --no-color %<CR>
+"Plugin 'mmorearty/elixir-ctags'
+"au BufRead,BufNewFile *.ex set filetype=elixir
+"au BufRead,BufNewFile *.exs set filetype=elixir
+"nnoremap <leader>t :!mix test --no-color %<CR>
+
+" Elixir
+Plugin 'slashmili/alchemist.vim'
+" Phoenix
+Plugin 'c-brenn/phoenix.vim'
 
 
 " HTML5
@@ -369,12 +374,12 @@ Plugin 'suy/vim-ctrlp-commandline'
 let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_types = ['fil']
-let g:ctrlp_extensions = ['funky', 'commandline'] 
+let g:ctrlp_extensions = ['funky', 'commandline']
 
 " CtrlPCommandLine
 command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 " CtrlPFunky
-let g:ctrlp_funky_matchtype = 'path' 
+let g:ctrlp_funky_matchtype = 'path'
 
 map <silent> <leader>1 :CtrlPCurWD<CR>
 map <silent> <leader>2 :CtrlP<CR>
@@ -425,6 +430,9 @@ Plugin 'adlawson/vim-sorcerer'
 Plugin 'vim-scripts/strange'
 Plugin 'rcdilorenzo/vim-colors-pencil'
 
+" Plugin 'junegunn/fzf'
+" Plugin 'junegunn/fzf.vim'
+
 " Font (download for compatility with airline)
 " set guifont=Sauce\ Code\ Powerline:h13
 set guifont=Hack:h13
@@ -446,6 +454,21 @@ set background=dark
  set laststatus=2
  Plugin 'vim-airline/vim-airline'
  Plugin 'vim-airline/vim-airline-themes'
+    " let g:airline_theme= 'luna'
+    "  let g:bufferline_echo = 0
+	" let g:airline_powerline_fonts=1
+	" let g:airline_enable_branch=1
+	" let g:airline_enable_syntastic=1
+	" let g:airline_branch_prefix = '⎇ '
+	" let g:airline_paste_symbol = '∥'
+	" " let g:airline#extensions#tabline#enabled = 0let g:airline_theme= 'luna'
+	" let g:bufferline_echo = 0
+	" let g:airline_powerline_fonts=1
+	" let g:airline_enable_branch=1
+	" let g:airline_enable_syntastic=1
+	" let g:airline_branch_prefix = '⎇ '
+	" let g:airline_paste_symbol = '∥'
+	" let g:airline#extensions#tabline#enabled = 0
 
 " <<==== STATUSBAR ====
 
@@ -464,3 +487,4 @@ syntax enable
 "配色方案
 "colorscheme desert  "默认使用
 colorscheme molokai " カラースキームにmolokaiを設定する
+"colorscheme molokaimolokai " カラースキームにmolokaiを設定する
