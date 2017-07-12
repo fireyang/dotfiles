@@ -32,7 +32,7 @@ call vundle#begin()
 
 " start vundler
 Plugin 'gmarik/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
@@ -86,7 +86,8 @@ set hls
 "set ls=2
 "set cursorline
 set nowrap
-set backspace=indent,eol,start
+set nocompatible
+" set backspace=indent,eol,start
 set completeopt -=preview
 set textwidth=95
 set ttyfast
@@ -154,7 +155,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <down> gj
 nnoremap <up> gk
-set backspace=indent,eol,start
+" set backspace=indent,eol,start
 "}}}
 
 "   if has('mouse')
@@ -323,7 +324,7 @@ nnoremap <silent> <s-backspace> :BD!<cr>
 au FileType nerdtree cnoreabbrev <buffer> bd <nop>
 au FileType nerdtree cnoreabbrev <buffer> BD <nop>
 "NERDTree过滤文件
-let NERDTreeIgnore=['.svn$','.fla$','.doc$','.swc$','\.o$']
+let NERDTreeIgnore=['.lock$', '.svn$','.fla$','.doc$','.swc$','\.o$']
 "NERDTree标签文件目录
 "let NERDTreeBookmarksFile='/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
 "let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
@@ -349,6 +350,9 @@ au BufRead,BufNewFile *.ex set filetype=elixir
 au BufRead,BufNewFile *.exs set filetype=elixir
 nnoremap <leader>t :!mix test --no-color %<CR>
 
+"{{{
+Plugin 'fireyang/rg.vim'
+"}}}
 
 " HTML5
 Plugin 'othree/html5.vim'
@@ -369,12 +373,12 @@ Plugin 'suy/vim-ctrlp-commandline'
 let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_types = ['fil']
-let g:ctrlp_extensions = ['funky', 'commandline'] 
+let g:ctrlp_extensions = ['funky', 'commandline']
 
 " CtrlPCommandLine
 command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 " CtrlPFunky
-let g:ctrlp_funky_matchtype = 'path' 
+let g:ctrlp_funky_matchtype = 'path'
 
 map <silent> <leader>1 :CtrlPCurWD<CR>
 map <silent> <leader>2 :CtrlP<CR>
@@ -425,6 +429,11 @@ Plugin 'adlawson/vim-sorcerer'
 Plugin 'vim-scripts/strange'
 Plugin 'rcdilorenzo/vim-colors-pencil'
 
+" rust lang
+Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
+
+
 " Font (download for compatility with airline)
 " set guifont=Sauce\ Code\ Powerline:h13
 set guifont=Hack:h13
@@ -447,6 +456,9 @@ set background=dark
  Plugin 'vim-airline/vim-airline'
  Plugin 'vim-airline/vim-airline-themes'
 
+ " Theme
+ Plugin 'chriskempson/base16-vim'
+
 " <<==== STATUSBAR ====
 
 
@@ -460,7 +472,14 @@ syntax enable
 "set background=dark
 "endif
 
-"colorscheme herald
+"else
+" colorscheme herald
 "配色方案
-"colorscheme desert  "默认使用
-colorscheme molokai " カラースキームにmolokaiを設定する
+" colorscheme desert  "默认使用
+
+if has("mac")
+    colorscheme base16-default-dark
+else
+    colorscheme molokai " カラースキームにmolokaiを設定する
+endif
+" colorscheme gruvbox
