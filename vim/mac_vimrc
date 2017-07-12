@@ -501,7 +501,8 @@ syntax enable
 " colorscheme desert  "默认使用
 
 if has("mac")
-    colorscheme base16-default-dark
+    " colorscheme base16-default-dark
+    colorscheme molokai " カラースキームにmolokaiを設定する
 else
     colorscheme molokai " カラースキームにmolokaiを設定する
 endif
