@@ -144,7 +144,7 @@ map <leader>ft :call Search_Word()<CR>:cw<CR>
 if !exists('*Search_Word')
     function Search_Word()
         let w = expand("<cword>") " 在当前光标位置抓词
-        execute 'vimgrep /' . w . '/j **/*.{[ch],cpp}'
+        execute 'vimgrep /' . w . '/j **/*'
         "echo w
     endfunction
 endif
@@ -331,7 +331,7 @@ let NERDTreeIgnore=['.lock$', '.svn$','.fla$','.doc$','.swc$','\.o$']
 " }}}
 
 Plugin 'Lokaltog/powerline-fonts'
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-vinegar'
@@ -345,17 +345,22 @@ Plugin 'oscarh/vimerl'
 " Elixir
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'mattreduce/vim-mix'
-Plugin 'mmorearty/elixir-ctags'
-au BufRead,BufNewFile *.ex set filetype=elixir
-au BufRead,BufNewFile *.exs set filetype=elixir
-nnoremap <leader>t :!mix test --no-color %<CR>
+"Plugin 'mmorearty/elixir-ctags'
+"au BufRead,BufNewFile *.ex set filetype=elixir
+"au BufRead,BufNewFile *.exs set filetype=elixir
+"nnoremap <leader>t :!mix test --no-color %<CR>
+
+" Elixir
+Plugin 'slashmili/alchemist.vim'
+" Phoenix
+Plugin 'c-brenn/phoenix.vim'
 
 "{{{
 Plugin 'fireyang/rg.vim'
 "}}}
 
 " HTML5
-Plugin 'othree/html5.vim'
+" Plugin 'othree/html5.vim'
 
 "Golang
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
@@ -363,7 +368,7 @@ Plugin 'fatih/vim-go'
 let g:syntastic_go_checkers = []
 
 " elm
-Plugin 'elmcast/elm-vim'
+" Plugin 'elmcast/elm-vim'
 
 " ctrlp config
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -433,6 +438,8 @@ Plugin 'rcdilorenzo/vim-colors-pencil'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 
+" Plugin 'junegunn/fzf'
+" Plugin 'junegunn/fzf.vim'
 
 " Font (download for compatility with airline)
 " set guifont=Sauce\ Code\ Powerline:h13
@@ -455,6 +462,21 @@ set background=dark
  set laststatus=2
  Plugin 'vim-airline/vim-airline'
  Plugin 'vim-airline/vim-airline-themes'
+    " let g:airline_theme= 'luna'
+    "  let g:bufferline_echo = 0
+	" let g:airline_powerline_fonts=1
+	" let g:airline_enable_branch=1
+	" let g:airline_enable_syntastic=1
+	" let g:airline_branch_prefix = '⎇ '
+	" let g:airline_paste_symbol = '∥'
+	" " let g:airline#extensions#tabline#enabled = 0let g:airline_theme= 'luna'
+	" let g:bufferline_echo = 0
+	" let g:airline_powerline_fonts=1
+	" let g:airline_enable_branch=1
+	" let g:airline_enable_syntastic=1
+	" let g:airline_branch_prefix = '⎇ '
+	" let g:airline_paste_symbol = '∥'
+	" let g:airline#extensions#tabline#enabled = 0
 
  " Theme
  Plugin 'chriskempson/base16-vim'
@@ -465,6 +487,7 @@ set background=dark
 call vundle#end()
 filetype plugin indent on
 syntax enable
+
 
 "if has('gui_running')
 "set background=light
@@ -483,3 +506,6 @@ else
     colorscheme molokai " カラースキームにmolokaiを設定する
 endif
 " colorscheme gruvbox
+"colorscheme desert  "默认使用
+" colorscheme molokai " カラースキームにmolokaiを設定する
+"colorscheme molokaimolokai " カラースキームにmolokaiを設定する
