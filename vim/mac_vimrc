@@ -479,7 +479,7 @@ set background=dark
 	" let g:airline#extensions#tabline#enabled = 0
 
  " Theme
- Plugin 'chriskempson/base16-vim'
+ " Plugin 'chriskempson/base16-vim'
 
 " <<==== STATUSBAR ====
 
