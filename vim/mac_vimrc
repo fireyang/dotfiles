@@ -80,14 +80,18 @@ set smartcase
 set smartindent
 set showmatch
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 set hls
 "set relativenumber
 "set ls=2
 "set cursorline
 set nowrap
 set nocompatible
-" set backspace=indent,eol,start
+
+if has("mac")
+    " set backspace=2
+    set backspace=indent,eol,start
+endif
 set completeopt -=preview
 set textwidth=95
 set ttyfast
