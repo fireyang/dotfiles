@@ -41,7 +41,14 @@ set laststatus=2
 set showmode
 set showcmd
 Plugin 'tomasr/molokai'
+Plugin 'nanotech/jellybeans.vim'
 "colorscheme molokai " カラースキームにmolokaiを設定する
+
+"{{{
+Plugin 'airblade/vim-rooter'
+" let g:rooter_change_directory_for_non_project_files = 'current'
+
+"}}}
 
 set t_Co=256 " iTerm2など既に256色環境なら無くても良い
 
@@ -334,7 +341,7 @@ let NERDTreeIgnore=['.lock$', '.svn$','.fla$','.doc$','.swc$','\.o$']
 "let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
 " }}}
 
-Plugin 'Lokaltog/powerline-fonts'
+" Plugin 'Lokaltog/powerline-fonts'
 " Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'plasticboy/vim-markdown'
@@ -508,7 +515,7 @@ if has("mac")
     " colorscheme base16-default-dark
     colorscheme molokai " カラースキームにmolokaiを設定する
 else
-    colorscheme molokai " カラースキームにmolokaiを設定する
+    colorscheme jellybeans " カラースキームにmolokaiを設定する
 endif
 " colorscheme gruvbox
 "colorscheme desert  "默认使用
