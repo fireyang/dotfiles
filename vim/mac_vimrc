@@ -40,7 +40,7 @@ Plugin 'itchyny/lightline.vim'
 set laststatus=2
 set showmode
 set showcmd
-Plugin 'tomasr/molokai'
+" Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 "colorscheme molokai " カラースキームにmolokaiを設定する
 
@@ -55,8 +55,12 @@ set t_Co=256 " iTerm2など既に256色環境なら無くても良い
 " 显示全角半角
 Plugin 'bronson/vim-trailing-whitespace'
 
-" 缩进可视化
+"{{{ 缩进可视化 ps:json 双引号不可见
 Plugin 'Yggdroot/indentLine'
+" let g:indentLine_conceallevel = '0'
+autocmd Filetype json let g:indentLine_setConceal = 0
+autocmd Filetype markdown let g:indentLine_conceallevel = 0
+"}}}
 
 " Split Management
 " " ====>
@@ -344,7 +348,10 @@ let NERDTreeIgnore=['.lock$', '.svn$','.fla$','.doc$','.swc$','\.o$']
 " Plugin 'Lokaltog/powerline-fonts'
 " Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
+" {{{
 Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
+"}}}
 Plugin 'tpope/vim-vinegar'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'mileszs/ack.vim'
