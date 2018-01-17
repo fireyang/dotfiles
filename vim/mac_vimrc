@@ -520,9 +520,9 @@ syntax enable
 
 if has("mac")
     " colorscheme base16-default-dark
-    colorscheme molokai " カラースキームにmolokaiを設定する
+    colorscheme jellybeans
 else
-    colorscheme jellybeans " カラースキームにmolokaiを設定する
+    colorscheme jellybeans
 endif
 " colorscheme gruvbox
 "colorscheme desert  "默认使用
