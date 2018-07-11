@@ -92,6 +92,7 @@ set smartindent
 set showmatch
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype vue setlocal ts=2 sts=2 sw=2
 set hls
 "set relativenumber
 "set ls=2
@@ -500,6 +501,8 @@ set background=dark
  " Plugin 'chriskempson/base16-vim'
 
 " <<==== STATUSBAR ====
+"
+Plugin 'posva/vim-vue'
 
 
 call vundle#end()

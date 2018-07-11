@@ -9,9 +9,10 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="dpoggi"
 #ZSH_THEME="zhann"
-ZSH_THEME="gallois"
+# ZSH_THEME="gallois"
+ZSH_THEME="spaceship"
 # ZSH_THEME="taktoa"
-#ZSH_THEME="miloshadzic"
+# ZSH_THEME="miloshadzic"
 
 
 # Example aliases
@@ -57,3 +58,7 @@ alias purgeAllBuilds='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 source $ZSH/oh-my-zsh.sh
 source ~/.zshrc_local
 
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
