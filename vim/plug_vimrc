@@ -22,30 +22,28 @@ if has("autocmd")
 endif
 "if has('vim_starting')
 " install vundle
-if !isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
-    echo "install Vundle..."
-    :call system("git clone git://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim")
+if !filereadable(glob("~/.vim/autoload/plug.vim"))
+    echo "install plug-vim..."
+    " :call system("curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim")
 endif
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" start plug
+call plug#begin('~/.vim/plugged')
 "endif
 
-" start vundler
-Plugin 'gmarik/Vundle.vim'
-" Plugin 'flazz/vim-colorschemes'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+" Plug 'flazz/vim-colorschemes'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 set laststatus=2
 set showmode
 set showcmd
-" Plugin 'tomasr/molokai'
-Plugin 'nanotech/jellybeans.vim'
+" Plug 'tomasr/molokai'
+Plug 'nanotech/jellybeans.vim'
 "colorscheme molokai " カラースキームにmolokaiを設定する
 
 "{{{
-Plugin 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'
 " let g:rooter_change_directory_for_non_project_files = 'current'
 
 "}}}
@@ -53,10 +51,10 @@ Plugin 'airblade/vim-rooter'
 set t_Co=256 " iTerm2など既に256色環境なら無くても良い
 
 " 显示全角半角
-Plugin 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 
 "{{{ 缩进可视化 ps:json 双引号不可见
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " let g:indentLine_conceallevel = '0'
 autocmd Filetype json let g:indentLine_setConceal = 0
 autocmd Filetype markdown let g:indentLine_conceallevel = 0
@@ -201,8 +199,8 @@ if &term =~ "xterm"
 endif
 
 "BufExplorer 插件{{{
-"Plugin 'bufexplorer.zip'
-Plugin 'jlanzarotta/bufexplorer'
+"Plug 'bufexplorer.zip'
+Plug 'jlanzarotta/bufexplorer'
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -215,6 +213,8 @@ map <leader>ba :1,300 bd!<cr>
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
 
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 
 " 窗口区域切换,F5 后 ↑↓←→  来切换
@@ -310,7 +310,7 @@ map <leader>cd :cd %:p:h<CR>
 
 
 " NERDTree插件的快捷键
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 "imap <silent> <F7> <esc>:NERDTreeToggle<CR>
 "nmap <silent> <F7> :NERDTreeToggle<CR>
 imap <leader>nt <esc>:NERDTreeToggle<CR>
@@ -332,12 +332,12 @@ let NERDTreeIgnore=['.lock$', '.svn$','.fla$','.doc$','.swc$','\.o$']
 "let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
 " }}}
 
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 " let g:nerdtree_tabs_open_on_console_startup = 1
 
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " 注释
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -353,55 +353,55 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Plugin 'Lokaltog/powerline-fonts'
-" Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
+" Plug 'Lokaltog/powerline-fonts'
+" Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/syntastic'
 " {{{
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 "}}}
-Plugin 'tpope/vim-vinegar'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mileszs/ack.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mileszs/ack.vim'
 let g:ack_default_options =
             \ " -s -H --nocolor --nogroup --column --smart-case --follow"
-"Plugin 'rking/ag.vim'
+"Plug 'rking/ag.vim'
 "erlang
-Plugin 'oscarh/vimerl'
+Plug 'oscarh/vimerl'
 " Elixir
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'mattreduce/vim-mix'
-"Plugin 'mmorearty/elixir-ctags'
+Plug 'elixir-lang/vim-elixir'
+Plug 'mattreduce/vim-mix'
+"Plug 'mmorearty/elixir-ctags'
 "au BufRead,BufNewFile *.ex set filetype=elixir
 "au BufRead,BufNewFile *.exs set filetype=elixir
 "nnoremap <leader>t :!mix test --no-color %<CR>
 
 " Elixir
-Plugin 'slashmili/alchemist.vim'
+Plug 'slashmili/alchemist.vim'
 " Phoenix
-Plugin 'c-brenn/phoenix.vim'
+Plug 'c-brenn/phoenix.vim'
 
 "{{{
-" Plugin 'fireyang/rg.vim'
+" Plug 'fireyang/rg.vim'
 "}}}
 
 " HTML5
-" Plugin 'othree/html5.vim'
+" Plug 'othree/html5.vim'
 
 "Golang
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'fatih/vim-go'
+Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'fatih/vim-go'
 let g:syntastic_go_checkers = []
 " save auto imports
 let g:go_fmt_command = "goimports"
 
 " elm
-" Plugin 'elmcast/elm-vim'
+" Plug 'elmcast/elm-vim'
 
 " ctrlp config
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'suy/vim-ctrlp-commandline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'suy/vim-ctrlp-commandline'
 "nmap <c-p> :CtrlPMRU<CR>
 let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
 let g:ctrlp_show_hidden = 1
@@ -427,45 +427,44 @@ let g:ctrlp_custom_ignore = {
 
 " }}}
 "
-Plugin 'uarun/vim-protobuf'
+Plug 'uarun/vim-protobuf'
 
 " {{{ c.vim
-Plugin 'vim-scripts/c.vim'
-Plugin 'vim-jp/vim-cpp'
-Plugin 'vim-scripts/a.vim'
+" Plug 'vim-scripts/c.vim'
+Plug 'vim-jp/vim-cpp'
+" Plug 'vim-scripts/a.vim'
 map <leader>a :A<cr>
 map <leader>b :AV<cr>
 " }}}
 
 " {{{  typescript
-Plugin 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 " }}}
 "
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
 
 " Cool tab completion stuff
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 set wildmenu
 "set wildmode=list:longest,full
 
 
 " ==== DECORATION ====>>
 " Some nice themes
-Plugin 'gmarik/ingretu'
-Plugin 'wombat256.vim'
-Plugin 'croaker/mustang-vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'adlawson/vim-sorcerer'
-Plugin 'vim-scripts/strange'
-Plugin 'rcdilorenzo/vim-colors-pencil'
+Plug 'gmarik/ingretu'
+Plug 'croaker/mustang-vim'
+Plug 'morhetz/gruvbox'
+Plug 'adlawson/vim-sorcerer'
+" Plug 'vim-scripts/strange'
+Plug 'rcdilorenzo/vim-colors-pencil'
 
 " rust lang
-Plugin 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
-Plugin 'cespare/vim-toml'
+Plug 'cespare/vim-toml'
 
 " Font (download for compatility with airline)
 " set guifont=Sauce\ Code\ Powerline:h13
@@ -486,8 +485,8 @@ set background=dark
 
 " Always show the statusline
  set laststatus=2
- Plugin 'vim-airline/vim-airline'
- Plugin 'vim-airline/vim-airline-themes'
+ Plug 'vim-airline/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
     " let g:airline_theme= 'luna'
     "  let g:bufferline_echo = 0
 	" let g:airline_powerline_fonts=1
@@ -505,14 +504,14 @@ set background=dark
 	" let g:airline#extensions#tabline#enabled = 0
 
  " Theme
- " Plugin 'chriskempson/base16-vim'
+ " Plug 'chriskempson/base16-vim'
 
 " <<==== STATUSBAR ====
 "
-Plugin 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 
-
-call vundle#end()
+" Initialize plugin system
+call plug#end()
 filetype plugin indent on
 syntax enable
 
