@@ -10,7 +10,7 @@ dotfiles
 ===
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-Install patched fonts (for arrows and other decorations)
+
 $ git clone git@github.com:powerline/fonts.git
 $ ./fonts/install.sh
 $ rm -rf fonts/

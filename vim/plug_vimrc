@@ -215,6 +215,7 @@ map <leader>cd :cd %:p:h<cr>
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+map <silent> <leader>1 :FZF<CR>
 
 
 " 窗口区域切换,F5 后 ↑↓←→  来切换
@@ -413,8 +414,9 @@ command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 " CtrlPFunky
 let g:ctrlp_funky_matchtype = 'path'
 
-map <silent> <leader>1 :CtrlPCurWD<CR>
-map <silent> <leader>2 :CtrlP<CR>
+" map <silent> <leader>1 :CtrlPCurWD<CR>
+map <silent> <leader>2 :CtrlPCurWD<CR>
+" map <silent> <leader>2 :CtrlP<CR>
 map <silent> <leader>3 :CtrlPBuffer<CR>
 "过滤文件
 set wildignore+=set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe,*.beam
