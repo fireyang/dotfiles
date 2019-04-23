@@ -215,6 +215,7 @@ map <leader>cd :cd %:p:h<cr>
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 map <silent> <leader>1 :FZF<CR>
 
 
@@ -467,6 +468,10 @@ Plug 'rcdilorenzo/vim-colors-pencil'
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 Plug 'cespare/vim-toml'
+
+
+" latex
+Plug 'lervag/vimtex'
 
 " Font (download for compatility with airline)
 " set guifont=Sauce\ Code\ Powerline:h13
