@@ -5,32 +5,15 @@ if 0 | endif
 set nocompatible
 filetype plugin indent off
 
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+if !filereadable(glob("~/.vim/autoload/plug.vim"))
+    echo "install plug-vim..."
+    " :call system("curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim")
 endif
-
 " echo "test222"
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-"
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'flazz/vim-colorschemes'
-
+" start plug
+call plug#begin('~/.vim/plugged')
+"endif
 " general configs
 set expandtab
 set smarttab
@@ -70,13 +53,16 @@ let g:snips_author = 'FireYang'
 " ESC
 noremap <leader><leader> <Esc>
 "
-colorscheme desert  "默认使用
+"
+"Golang
+" Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'fatih/vim-go'
+let g:syntastic_go_checkers = []
+" save auto imports
+let g:go_fmt_command = "goimports"
 
- call neobundle#end()
 
- " Required:
- filetype plugin indent on
-
- " If there are uninstalled bundles found on startup,
- " this will conveniently prompt you to install them.
- NeoBundleCheck
+" Initialize plugin system
+call plug#end()
+filetype plugin indent on
+syntax enable
