@@ -5,12 +5,6 @@ if 0 | endif
 set nocompatible
 filetype plugin indent off
 
-if !filereadable(glob("~/.vim/autoload/plug.vim"))
-    echo "install plug-vim..."
-    " :call system("curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim")
-endif
-" echo "test222"
-
 " start plug
 call plug#begin('~/.vim/plugged')
 "endif
@@ -52,8 +46,34 @@ let mapleader = ","
 let g:snips_author = 'FireYang'
 " ESC
 noremap <leader><leader> <Esc>
-"
-"
+
+map <leader>e :exec "edit" '~/.config/nvim/init.vim'<cr>
+
+"设置命令行2行
+set cmdheight=2
+"设置缓存
+set nobackup
+
+
+" Split Management
+" " ====>
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" 显示全角半角
+Plug 'bronson/vim-trailing-whitespace'
+
+"{{{ 缩进可视化 ps:json 双引号不可见
+Plug 'Yggdroot/indentLine'
+" let g:indentLine_conceallevel = '0'
+autocmd Filetype json let g:indentLine_setConceal = 0
+autocmd Filetype markdown let g:indentLine_conceallevel = 0
+"}}}
+
 "Golang
 " Plug 'nsf/gocode', {'rtp': 'vim/'}
 Plug 'fatih/vim-go'
@@ -61,6 +81,61 @@ let g:syntastic_go_checkers = []
 " save auto imports
 let g:go_fmt_command = "goimports"
 
+" Fuzzy finder
+"{{{
+Plug 'airblade/vim-rooter'
+" let g:rooter_change_directory_for_non_project_files = 'current'
+"}}}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+map <silent> <leader>1 :FZF<CR>
+map <silent> <leader>2 :Buffers<CR>
+
+" NERDTree插件的快捷键
+Plug 'scrooloose/nerdtree'
+"imap <silent> <F7> <esc>:NERDTreeToggle<CR>
+"nmap <silent> <F7> :NERDTreeToggle<CR>
+imap <leader>nt <esc>:NERDTreeToggle<CR>
+nmap <leader>nt :NERDTreeToggle<CR>
+" bufkill bd's: really do not mess with NERDTree buffer
+nnoremap <silent> <backspace> :BD<cr>
+nnoremap <silent> <s-backspace> :BD!<cr>
+" 显示行号
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+
+" Prevent :bd inside NERDTree buffer
+au FileType nerdtree cnoreabbrev <buffer> bd <nop>
+au FileType nerdtree cnoreabbrev <buffer> BD <nop>
+"NERDTree过滤文件
+let NERDTreeIgnore=['.lock$', '.svn$','.fla$','.doc$','.swc$','\.o$']
+"NERDTree标签文件目录
+"let NERDTreeBookmarksFile='/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
+"let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
+" }}}
+
+Plug 'jistr/vim-nerdtree-tabs'
+" let g:nerdtree_tabs_open_on_console_startup = 1
+
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" 注释
+Plug 'scrooloose/nerdcommenter'
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
 call plug#end()
