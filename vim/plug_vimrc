@@ -59,6 +59,10 @@ Plug 'Yggdroot/indentLine'
 autocmd Filetype json let g:indentLine_setConceal = 0
 autocmd Filetype markdown let g:indentLine_conceallevel = 0
 "}}}
+"
+" 缩进提示线
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
 
 " Split Management
 " " ====>
@@ -233,7 +237,7 @@ map <silent> <leader>2 :Buffers<CR>
 " Syntactic language support
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 "Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
