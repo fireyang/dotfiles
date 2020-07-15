@@ -104,6 +104,9 @@ set nocompatible
 if has("mac")
     " set backspace=2
     set backspace=indent,eol,start
+else
+    " 解决插入模式下delete/backspce键失效问题
+    set backspace=2
 endif
 set completeopt -=preview
 set textwidth=95
