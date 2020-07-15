@@ -73,6 +73,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" VSplit
+map <leader>vs :vsplit<cr><C-l>
+" fast saving
+map <leader>w :w<cr>
+map <leader>q :q<cr>
 
 " 显示全角半角
 Plug 'bronson/vim-trailing-whitespace'
@@ -84,12 +89,23 @@ autocmd Filetype json let g:indentLine_setConceal = 0
 autocmd Filetype markdown let g:indentLine_conceallevel = 0
 "}}}
 
+" 缩进提示线
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+
 "Golang
 " Plug 'nsf/gocode', {'rtp': 'vim/'}
 Plug 'fatih/vim-go'
 let g:syntastic_go_checkers = []
 " save auto imports
 let g:go_fmt_command = "goimports"
+let g:go_code_completion_enabled = 0
+" GoMetaLinter settings
+"let g:go_metalinter_autosave = 1
+"let g:go_metalinter_command = "golangci-lint"
+"let g:go_list_type = 'quickfix'
+
+Plug 'uarun/vim-protobuf'
 
 " Fuzzy finder
 "{{{
@@ -124,6 +140,25 @@ let NERDTreeIgnore=['.lock$', '.svn$','.fla$','.doc$','.swc$','\.o$']
 "let NERDTreeBookmarksFile='d:/Users/fireyang/soft/MacVim-7_3-53/NerdBookmarks.txt'
 " }}}
 
+"BufExplorer 插件{{{
+"Plug 'bufexplorer.zip'
+Plug 'jlanzarotta/bufexplorer'
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>
+"切换下一缓存区文件
+map <leader>bn :bn<cr>
+"切换上一缓存区文件
+map <leader>bp :bp<cr>
+" Close all the buffers
+map <leader>ba :1,300 bd!<cr>
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
+
+" rust lang
+Plug 'rust-lang/rust.vim'
+" let g:rustfmt_autosave = 1
+
 Plug 'jistr/vim-nerdtree-tabs'
 " let g:nerdtree_tabs_open_on_console_startup = 1
 
@@ -145,7 +180,23 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+"{{{ 缩进可视化 ps:json 双引号不可见
+Plug 'Yggdroot/indentLine'
+" let g:indentLine_conceallevel = '0'
+autocmd Filetype json let g:indentLine_setConceal = 0
+autocmd Filetype markdown let g:indentLine_conceallevel = 0
+"}}}
+
 Plug 'scrooloose/syntastic'
+" 显示git状态
+Plug 'tpope/vim-fugitive'
+
+if has("mac")
+    " colorscheme base16-default-dark
+    colorscheme jellybeans
+else
+    colorscheme desert
+endif
 
 Plug 'rust-lang/rust.vim'
 
