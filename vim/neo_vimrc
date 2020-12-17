@@ -199,6 +199,7 @@ else
 endif
 
 Plug 'rust-lang/rust.vim'
+Plug 'stephpy/vim-yaml'
 
 " Initialize plugin system
 call plug#end()
