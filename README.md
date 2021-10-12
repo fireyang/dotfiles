@@ -5,12 +5,18 @@ dotfiles
 
 安装oh my zsh
 
+## vim配置
 
-安装vim的Vundle插件
-===
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-
-$ git clone git@github.com:powerline/fonts.git
-$ ./fonts/install.sh
-$ rm -rf fonts/
+```
+mkdir -p ~/.config/nvim
+ln -s ~/dotfiles/vim/neo_vimrc ~/.config/nvim/init.vim
+```
+* 安装vim-plug
+```
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+ ```
+ * 安装vim插件
+ ```
+ :PlugInstall
+ ```
