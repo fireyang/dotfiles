@@ -88,6 +88,8 @@ Plug 'Yggdroot/indentLine'
 autocmd Filetype json let g:indentLine_setConceal = 0
 autocmd Filetype markdown let g:indentLine_conceallevel = 0
 "}}}
+" 引号成对出线
+Plug 'cohama/lexima.vim'
 
 " 缩进提示线
 Plug 'nathanaelkane/vim-indent-guides'
@@ -95,15 +97,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 "Golang
 " Plug 'nsf/gocode', {'rtp': 'vim/'}
-Plug 'fatih/vim-go'
-let g:syntastic_go_checkers = []
-" save auto imports
-let g:go_fmt_command = "goimports"
-let g:go_code_completion_enabled = 0
-" GoMetaLinter settings
-"let g:go_metalinter_autosave = 1
-"let g:go_metalinter_command = "golangci-lint"
-"let g:go_list_type = 'quickfix'
+" Plug 'fatih/vim-go'
+" let g:syntastic_go_checkers = []
+" let g:go_fmt_command = "goimports"
+" let g:go_code_completion_enabled = 0
 
 Plug 'uarun/vim-protobuf'
 
@@ -190,15 +187,19 @@ autocmd Filetype markdown let g:indentLine_conceallevel = 0
 Plug 'scrooloose/syntastic'
 " 显示git状态
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " nvim 插件
 if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
+colorscheme desert
 if has("mac")
     " colorscheme base16-default-dark
-    colorscheme jellybeans
+    " colorscheme jellybeans
 else
     colorscheme desert
 endif
