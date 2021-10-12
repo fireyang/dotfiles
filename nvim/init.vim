@@ -191,6 +191,11 @@ Plug 'scrooloose/syntastic'
 " 显示git状态
 Plug 'tpope/vim-fugitive'
 
+" nvim 插件
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
+
 if has("mac")
     " colorscheme base16-default-dark
     colorscheme jellybeans
