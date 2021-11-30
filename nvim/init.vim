@@ -109,10 +109,6 @@ Plug 'uarun/vim-protobuf'
 Plug 'airblade/vim-rooter'
 " let g:rooter_change_directory_for_non_project_files = 'current'
 "}}}
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-map <silent> <leader>1 :FZF<CR>
-map <silent> <leader>2 :Buffers<CR>
 
 " NERDTree插件的快捷键
 Plug 'scrooloose/nerdtree'
@@ -194,7 +190,18 @@ if has('nvim')
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-lua/plenary.nvim'
+    " Plug 'nvim-telescope/telescope.nvim'
+    " Plug 'akinsho/toggleterm.nvim'
+else
 endif
+
+" fzf 插件 {{{
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+map <silent> <leader>ff :FZF<CR>
+map <silent> <leader>fb :Buffers<CR>
+" }}}
 
 colorscheme desert
 if has("mac")
@@ -206,6 +213,7 @@ endif
 
 Plug 'rust-lang/rust.vim'
 Plug 'stephpy/vim-yaml'
+Plug 'github/copilot.vim'
 
 " Initialize plugin system
 call plug#end()

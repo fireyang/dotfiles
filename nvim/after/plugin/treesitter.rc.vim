@@ -15,10 +15,14 @@ require'nvim-treesitter.configs'.setup {
   },
   ensure_installed = {
     "go",
+    "lua",
     "python",
     "json",
     "yaml",
     "html",
+    "css",
+    "bash",
+    "cmake",
     "scss"
   },
 }
