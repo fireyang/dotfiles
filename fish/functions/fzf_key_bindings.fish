@@ -1,0 +1,1 @@
+/Users/fireyang/.fzf/shell/key-bindings.fish

@@ -203,12 +203,12 @@ map <silent> <leader>ff :FZF<CR>
 map <silent> <leader>fb :Buffers<CR>
 " }}}
 
-colorscheme desert
+" colorscheme desert
 if has("mac")
     " colorscheme base16-default-dark
     " colorscheme jellybeans
 else
-    colorscheme desert
+    " colorscheme desert
 endif
 
 Plug 'rust-lang/rust.vim'
