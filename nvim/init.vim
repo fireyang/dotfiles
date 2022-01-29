@@ -202,6 +202,7 @@ Plug 'junegunn/fzf.vim'
 map <silent> <leader>ff :FZF<CR>
 map <silent> <leader>fb :Buffers<CR>
 " }}}
+map <silent> <leader>fg :Ag<CR>
 
 " colorscheme desert
 if has("mac")
@@ -214,6 +215,8 @@ endif
 Plug 'rust-lang/rust.vim'
 Plug 'stephpy/vim-yaml'
 Plug 'github/copilot.vim'
+
+Plug 'akinsho/toggleterm.nvim'
 
 " Initialize plugin system
 call plug#end()
