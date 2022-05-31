@@ -218,6 +218,8 @@ Plug 'github/copilot.vim'
 
 Plug 'akinsho/toggleterm.nvim'
 
+autocmd BufRead,BufNewFile *.ex,*.exs setlocal shiftwidth=2 tabstop=2
+
 " Initialize plugin system
 call plug#end()
 filetype plugin indent on

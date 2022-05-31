@@ -23,7 +23,8 @@ require'nvim-treesitter.configs'.setup {
     "css",
     "bash",
     "cmake",
-    "scss"
+    "scss",
+    "elixir",
   },
 }
 
