@@ -25,6 +25,10 @@ require'nvim-treesitter.configs'.setup {
     "cmake",
     "scss",
     "elixir",
+    "java",
+    "rust",
+    "javascript",
+    "typescript"
   },
 }
 
