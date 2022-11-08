@@ -214,9 +214,12 @@ endif
 
 Plug 'rust-lang/rust.vim'
 Plug 'stephpy/vim-yaml'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 Plug 'akinsho/toggleterm.nvim'
+Plug 'elixir-editors/vim-elixir'
+
+Plug 'ziglang/zig.vim'
 
 autocmd BufRead,BufNewFile *.ex,*.exs setlocal shiftwidth=2 tabstop=2
 
