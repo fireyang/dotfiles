@@ -1,39 +1,34 @@
 local status_ok, mason = pcall(require, "mason")
 if not status_ok then
-  return
+	return
 end
 
 local mason_ok, mason_config = pcall(require, "mason-lspconfig")
 if not mason_ok then
-  return
+	return
 end
 
 local servers = {
-      "sumneko_lua",
-      "rust_analyzer",
-      --"tsserver",
-      --"tailwindcss",
-      --"golangci_lint_ls",
-      "gopls",
-      --"volar",
-      --"elixirls",
+	"sumneko_lua",
+	"rust_analyzer",
+	"tsserver",
+	"gopls",
 }
 
 mason.setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
 })
 
 mason_config.setup({
-    ensure_installed = servers,
-    automatic_installation = true,
+	ensure_installed = servers,
+	automatic_installation = true,
 })
-
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then

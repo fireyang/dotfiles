@@ -10,7 +10,6 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-
 keymap("n", "<Leader>e", ":exec 'edit' '~/.config/nvim/init.lua'<cr>", opts)
 -- NERDTree
 keymap("i", "<leader>nt", "<esc>:NERDTreeToggle<CR>", opts)
@@ -33,5 +32,3 @@ keymap("n", "<C-H>", "<C-W><C-H>", opts)
 keymap("", "<leader>vs", ":vsplit<cr><C-l>", opts)
 keymap("", "<leader>w", ":w<cr>", opts)
 keymap("", "<leader>q", ":q<cr>", opts)
-
-
