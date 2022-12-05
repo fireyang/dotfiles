@@ -1,66 +1,96 @@
-local Plug = vim.fn["plug#"]
+-- auto install packer if not installed
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
+end
+local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
-vim.call("plug#begin", "~/.vim/plugged")
+-- autocommand that reloads neovim and installs/updates/removes plugins
+-- when file is saved
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
 
-Plug("tpope/vim-sensible")
--- nerdtree
-Plug("scrooloose/nerdtree", { on = "NERDTreeToggle" })
+-- import packer safely
+local status, packer = pcall(require, "packer")
+if not status then
+	return
+end
 
-Plug("scrooloose/nerdcommenter")
-Plug("bronson/vim-trailing-whitespace")
-Plug("nvim-treesitter/nvim-treesitter", { on = "TSUpdate" })
--- language
-Plug("rust-lang/rust.vim")
+-- add list of plugins to install
+return packer.startup(function(use)
+	use("wbthomason/packer.nvim")
+	use("tpope/vim-sensible")
+	-- nerdtree
+	use("scrooloose/nerdtree", { on = "NERDTreeToggle" })
 
--- other plugins
-Plug("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-Plug("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-Plug("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-Plug("akinsho/bufferline.nvim")
-Plug("akinsho/toggleterm.nvim")
---Plug "jlanzarotta/bufexplorer"
+	use("scrooloose/nerdcommenter")
+	use("bronson/vim-trailing-whitespace")
+	use("nvim-treesitter/nvim-treesitter", { on = "TSUpdate" })
+	-- language
+	use("rust-lang/rust.vim")
 
--- lua line
-Plug("nvim-lualine/lualine.nvim")
-Plug("kyazdani42/nvim-web-devicons")
+	-- other plugins
+	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+	use("akinsho/bufferline.nvim")
+	use("akinsho/toggleterm.nvim")
+	use("jlanzarotta/bufexplorer")
 
---Plug 'nvim-tree/nvim-tree.lua'
-Plug("akinsho/toggleterm.nvim")
+	-- lua line
+	use("nvim-lualine/lualine.nvim")
+	use("kyazdani42/nvim-web-devicons")
 
--- cmp plugins
-Plug("hrsh7th/nvim-cmp") -- The completion plugin
-Plug("hrsh7th/cmp-buffer") -- buffer completions
-Plug("hrsh7th/cmp-path") -- path completions
-Plug("hrsh7th/cmp-cmdline") -- cmdline completions
-Plug("saadparwaiz1/cmp_luasnip") -- snippet completions
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("RRethy/vim-illuminate")
+	--use 'nvim-tree/nvim-tree.lua'
 
--- snippets
-Plug("L3MON4D3/LuaSnip") --snippet engine
-Plug("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	-- cmp plugins
+	use("hrsh7th/nvim-cmp") -- The completion plugin
+	use("hrsh7th/cmp-buffer") -- buffer completions
+	use("hrsh7th/cmp-path") -- path completions
+	use("hrsh7th/cmp-cmdline") -- cmdline completions
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("hrsh7th/cmp-nvim-lsp")
+	use("RRethy/vim-illuminate")
 
--- LSP
-Plug("neovim/nvim-lspconfig") -- enable LSP
---Plug "williamboman/nvim-lsp-installer" -- simple to use language server installer
-Plug("williamboman/mason.nvim")
-Plug("williamboman/mason-lspconfig.nvim")
---Plug "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-Plug("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	-- snippets
+	use("L3MON4D3/LuaSnip") --snippet engine
+	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
--- Telescope
-Plug("nvim-telescope/telescope.nvim")
+	-- LSP
+	use("neovim/nvim-lspconfig") -- enable LSP
+	--use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 
--- Colorschemes
--- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-Plug("lunarvim/darkplus.nvim")
+	-- formatting & linting
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("jayp0521/mason-null-ls.nvim")
 
--- Git
-Plug("lewis6991/gitsigns.nvim")
+	-- maximizes and restores current window
+	use("szw/vim-maximizer")
 
--- fzf
---Plug 'junegunn/fzf'
---Plug('junegunn/fzf', { on = "plug@fzf#install()" })
---Plug 'junegunn/fzf.vim'
+	-- Telescope
+	use("nvim-telescope/telescope.nvim")
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-vim.call("plug#end")
+	-- Colorschemes
+	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+	use("lunarvim/darkplus.nvim")
+
+	-- Git
+	use("lewis6991/gitsigns.nvim")
+
+	if packer_bootstrap then
+		require("packer").sync()
+	end
+end)

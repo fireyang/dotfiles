@@ -10,6 +10,4 @@ require("user.toggleterm")
 require("user.bufferline")
 require("user.lualine")
 require("user.telescope")
---require "user.fzf"
-
---require "fzf"
+require("user.gitsigns")

@@ -1,3 +1,4 @@
+-- colorscheme nightfly
 vim.cmd([[
 try
   colorscheme darkplus

@@ -1,6 +1,14 @@
 local M = {}
 
--- TODO: backfill this to template
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+	return
+end
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -15,7 +23,7 @@ M.setup = function()
 
 	local config = {
 		-- disable virtual text
-		virtual_text = false,
+		virtual_text = true,
 		-- show signs
 		signs = {
 			active = signs,
@@ -77,21 +85,11 @@ M.on_attach = function(client, bufnr)
 
 	lsp_keymaps(bufnr)
 	--lsp_highlight_document(client)
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
+	local ill_status_ok, illuminate = pcall(require, "illuminate")
+	if not ill_status_ok then
 		return
 	end
 	illuminate.on_attach(client)
 end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	return
-end
-
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

@@ -3,13 +3,20 @@ if not status_ok then
 	return
 end
 
-local actions = require("telescope.actions")
+local actions_setup, actions = pcall(require, "telescope.actions")
+if not actions_setup then
+	return
+end
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>bv", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fc", builtin.grep_string, {})
+--vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
+--vim.keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 
 telescope.setup({
 	defaults = {
@@ -82,20 +89,6 @@ telescope.setup({
 			},
 		},
 	},
-	pickers = {
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--   picker_config_key = value,
-		--   ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
-	},
-	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
-	},
 })
+
+telescope.load_extension("fzf")
