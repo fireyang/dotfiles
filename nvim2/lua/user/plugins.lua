@@ -80,8 +80,8 @@ return packer.startup(function(use)
 	use("szw/vim-maximizer")
 
 	-- Telescope
-	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
