@@ -2,7 +2,7 @@ if !exists('g:lspconfig')
     finish
 endif
 
-lua <<EOF
+lua << EOF
     -- golang lsp
     lspconfig = require "lspconfig"
     lspconfig.gopls.setup{}
@@ -25,16 +25,17 @@ lua <<EOF
             end
         end
 
-        vim.lsp.buf.formatting()
+        -- vim.lsp.buf.formatting()
    end
 
 EOF
+
 " nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>D     <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>R	   <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
 " 自动格式化
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
+" autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
 autocmd BufWritePre *.go lua goimports(1000)
 
 

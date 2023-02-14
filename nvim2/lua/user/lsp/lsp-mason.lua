@@ -9,10 +9,12 @@ if not mason_ok then
 end
 
 local servers = {
-	"sumneko_lua",
+	-- "sumneko_lua",
+	"lua_ls",
 	"rust_analyzer",
 	"tsserver",
 	"gopls",
+	--"clangd",
 }
 
 mason.setup({
@@ -67,6 +69,7 @@ mason_null_ls.setup({
 		"gofumpt",
 		"goimports",
 		"rustfmt",
+		"clang-format",
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,

@@ -34,7 +34,7 @@ return packer.startup(function(use)
 	use("scrooloose/nerdtree", { on = "NERDTreeToggle" })
 
 	use("scrooloose/nerdcommenter")
-	use("bronson/vim-trailing-whitespace")
+	--use("bronson/vim-trailing-whitespace")
 	use("nvim-treesitter/nvim-treesitter", { on = "TSUpdate" })
 	-- language
 	use("rust-lang/rust.vim")
@@ -80,8 +80,11 @@ return packer.startup(function(use)
 	use("szw/vim-maximizer")
 
 	-- Telescope
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	--use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	-- brew install ripgrep
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
+
+	-- FZF
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -89,6 +92,14 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+
+	-- markdown preview
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()

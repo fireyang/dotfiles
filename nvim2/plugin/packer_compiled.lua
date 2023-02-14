@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -209,11 +214,6 @@ _G.packer_plugins = {
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
   },
-  ["telescope-fzf-native.nvim"] = {
-    loaded = true,
-    path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
-    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -238,11 +238,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/vim-sensible",
     url = "https://github.com/tpope/vim-sensible"
-  },
-  ["vim-trailing-whitespace"] = {
-    loaded = true,
-    path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/vim-trailing-whitespace",
-    url = "https://github.com/bronson/vim-trailing-whitespace"
   }
 }
 

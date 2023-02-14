@@ -97,7 +97,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 "Golang
 " Plug 'nsf/gocode', {'rtp': 'vim/'}
-" Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " let g:syntastic_go_checkers = []
 " let g:go_fmt_command = "goimports"
 " let g:go_code_completion_enabled = 0

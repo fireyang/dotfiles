@@ -23,6 +23,7 @@ null_ls.setup({
 		--formatting.eslint_d,
 		--diagnostics.eslint_d,
 		formatting.prettierd,
+		formatting.clang_format,
 		-- diagnostics.flake8
 	},
 	on_attach = function(client, bufnr)
