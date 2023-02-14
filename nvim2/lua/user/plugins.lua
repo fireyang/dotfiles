@@ -81,7 +81,7 @@ return packer.startup(function(use)
 
 	-- Telescope
 	--use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	-- brew install ripgrep
+	-- BurntSushi/ripgrep: brew install ripgrep
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
 
 	-- FZF
