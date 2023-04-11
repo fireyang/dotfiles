@@ -38,3 +38,6 @@ keymap("", "<leader>q", ":q<cr>", opts)
 keymap("", "<leader>mc", "<Plug>MarkdownPreview", opts)
 keymap("", "<leader>md", "<Plug>MarkdownPreviewStop", opts)
 keymap("", "<leader>mp", "<Plug>MarkdownPreviewToggle", opts)
+
+-- copy to System Clipboard
+keymap("", "<leader>y", '"*y', opts)
