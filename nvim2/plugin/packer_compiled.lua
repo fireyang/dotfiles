@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  bufexplorer = {
-    loaded = true,
-    path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/bufexplorer",
-    url = "https://github.com/jlanzarotta/bufexplorer"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/bufferline.nvim",

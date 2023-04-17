@@ -46,7 +46,7 @@ return packer.startup(function(use)
 	--use("akinsho/bufferline.nvim")
 	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 	use("akinsho/toggleterm.nvim")
-	use("jlanzarotta/bufexplorer")
+	--use("jlanzarotta/bufexplorer")
 
 	-- lua line
 	use("nvim-lualine/lualine.nvim")
