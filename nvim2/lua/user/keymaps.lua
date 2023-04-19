@@ -41,3 +41,21 @@ keymap("", "<leader>mp", "<Plug>MarkdownPreviewToggle", opts)
 
 -- copy to System Clipboard
 keymap("", "<leader>y", '"*y', opts)
+
+-- Comment
+-- keymap("", "<leader>cc", function()
+--   return vim.v.count == 0 and "<Plug>(comment_toggle_linewise_current)" or "<Plug>(comment_toggle_linewise_count)"
+-- end, opts)
+-- local api = require("Comment.api")
+-- vim.keymap.set("", "<leader>cc", api.toggle.linewise.current)
+require("Comment").setup({
+	ignore = "^$",
+	toggler = {
+		line = "<leader>cc",
+		block = "<leader>cb",
+	},
+	opleader = {
+		line = "<leader>cc",
+		block = "<leader>cb",
+	},
+})

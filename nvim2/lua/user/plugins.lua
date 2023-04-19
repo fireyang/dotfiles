@@ -33,7 +33,13 @@ return packer.startup(function(use)
 	-- nerdtree
 	use("scrooloose/nerdtree", { on = "NERDTreeToggle" })
 
-	use("scrooloose/nerdcommenter")
+	--use("scrooloose/nerdcommenter")
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 	--use("bronson/vim-trailing-whitespace")
 	use("nvim-treesitter/nvim-treesitter", { on = "TSUpdate" })
 	-- language
