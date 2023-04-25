@@ -81,7 +81,8 @@ return packer.startup(function(use)
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim")
-	use("jayp0521/mason-null-ls.nvim")
+	-- use("jayp0521/mason-null-ls.nvim")
+	use("jay-babu/mason-null-ls.nvim")
 
 	-- maximizes and restores current window
 	use("szw/vim-maximizer")

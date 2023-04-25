@@ -148,7 +148,7 @@ _G.packer_plugins = {
   ["mason-null-ls.nvim"] = {
     loaded = true,
     path = "/Users/fireyang/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
-    url = "https://github.com/jayp0521/mason-null-ls.nvim"
+    url = "https://github.com/jay-babu/mason-null-ls.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
