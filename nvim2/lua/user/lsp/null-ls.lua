@@ -38,7 +38,7 @@ null_ls.setup({
 				callback = function()
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
 					--vim.lsp.buf.formatting_sync()
-					-- vim.notify("formatting: " .. client.name, vim.log.levels.WARN)
+					-- vim.notify("formatting: " .. bufnr, vim.log.levels.WARN)
 					vim.lsp.buf.format({ bufnr = bufnr })
 				end,
 			})
