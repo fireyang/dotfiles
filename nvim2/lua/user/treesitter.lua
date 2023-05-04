@@ -5,7 +5,18 @@ end
 
 configs.setup({
 	ensure_installed = "all", -- "all" (parsers with maintainers), or a list of languages
+	-- ensure_installed = {
+	-- 	"c",
+	-- 	"lua",
+	-- 	"rust",
+	-- 	"ruby",
+	-- 	"vim",
+	-- 	"go",
+	-- 	"python",
+	-- 	"vue",
+	-- },
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+	auto_install = false,
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	autopairs = {
 		enable = true,
