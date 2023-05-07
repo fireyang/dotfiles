@@ -48,6 +48,7 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 	},
+	"nvim-treesitter/playground",
 	-- language
 	"rust-lang/rust.vim",
 
@@ -55,7 +56,7 @@ require("lazy").setup({
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-	--use("akinsho/bufferline.nvim")
+	"akinsho/bufferline.nvim",
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "kyazdani42/nvim-web-devicons" },
 	"akinsho/toggleterm.nvim",
 	--use("jlanzarotta/bufexplorer")

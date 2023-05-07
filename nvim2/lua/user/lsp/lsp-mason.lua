@@ -18,6 +18,7 @@ local servers = {
 	"tailwindcss",
 	"yamlls",
 	"eslint",
+	"ruff_lsp",
 	--"clangd",
 }
 
