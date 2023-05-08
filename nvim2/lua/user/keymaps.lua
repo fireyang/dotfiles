@@ -48,3 +48,5 @@ keymap("", "<leader>y", '"*y', opts)
 -- end, opts)
 -- local api = require("Comment.api")
 -- vim.keymap.set("", "<leader>cc", api.toggle.linewise.current)
+--
+keymap("n", "<leader>bv", ":BufExplorer<CR>", opts)
