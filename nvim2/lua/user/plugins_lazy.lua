@@ -113,6 +113,8 @@ require("lazy").setup({
 	-- Git
 	"lewis6991/gitsigns.nvim",
 
+	"github/copilot.vim",
+
 	-- markdown preview
 	{
 		"iamcco/markdown-preview.nvim",

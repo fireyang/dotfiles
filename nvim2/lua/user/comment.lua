@@ -13,3 +13,6 @@ comment.setup({
 		block = "<leader>cb",
 	},
 })
+
+local ft = require("Comment.ft")
+ft.set("sdp", "//%s")

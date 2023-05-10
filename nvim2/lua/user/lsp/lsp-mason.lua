@@ -14,10 +14,10 @@ local servers = {
 	"rust_analyzer",
 	"tsserver",
 	"gopls",
-	"volar",
 	"tailwindcss",
 	"yamlls",
-	"eslint",
+	-- "volar",
+	-- "eslint",
 	"ruff_lsp",
 	--"clangd",
 }

@@ -21,5 +21,13 @@ ft_to_parser.mdx = "markdown"
 vim.cmd([[
 au! BufNewFile,BufRead Jenkinsfile* set ft=groovy
 au! BufNewFile,BufRead .env* set ft=sh
+au! BufNewFile,BufRead *.pc set ft=pc
 ]])
 -- autocmd BufNewFile,BufRead *.ini setfiletype dosini
+--
+--
+vim.filetype.add({
+	extension = {
+		sdp = "sdp",
+	},
+})

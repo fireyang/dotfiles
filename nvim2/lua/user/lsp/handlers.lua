@@ -84,7 +84,9 @@ M.on_attach = function(client, bufnr)
 	end
 
 	lsp_keymaps(bufnr)
+
 	--lsp_highlight_document(client)
+	-- 测试
 	local ill_status_ok, illuminate = pcall(require, "illuminate")
 	if not ill_status_ok then
 		return

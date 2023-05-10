@@ -1,0 +1,1 @@
+/Users/fireyang/work/tree-sitter-sdp/queries/highlights.scm
