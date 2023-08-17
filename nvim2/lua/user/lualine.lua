@@ -89,12 +89,18 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		--theme = "auto",
+		-- theme = "auto",
 		theme = lualine_nightfly,
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
+		globalstatus = false,
+		refresh = {
+			statusline = 1000,
+			tabline = 1000,
+			winbar = 1000,
+		},
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },

@@ -23,8 +23,8 @@ null_ls.setup({
 		formatting.goimports,
 		-- diagnostics.eslint_d,
 		-- formatting.eslint_d,
-		-- diagnostics.eslint,
-		-- formatting.eslint,
+		diagnostics.eslint,
+		formatting.eslint,
 		-- formatting.prettierd,
 		formatting.clang_format,
 		-- diagnostics.flake8

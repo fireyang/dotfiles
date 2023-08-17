@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- "folke/which-key.nvim",
@@ -57,32 +58,33 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"akinsho/bufferline.nvim",
-	{ "akinsho/bufferline.nvim", version = "*", dependencies = "kyazdani42/nvim-web-devicons" },
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	"akinsho/toggleterm.nvim",
 	"jlanzarotta/bufexplorer",
 	--use("jlanzarotta/bufexplorer")
 
 	-- lua line
-	-- "nvim-lualine/lualine.nvim",
+	{ "nvim-lualine/lualine.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	-- "kyazdani42/nvim-web-devicons",
 
 	--use 'nvim-tree/nvim-tree.lua'
 
 	-- cmp plugins
-	"hrsh7th/nvim-cmp", -- The completion plugin
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path", -- path completions
-	"hrsh7th/cmp-cmdline", -- cmdline completions
-	"saadparwaiz1/cmp_luasnip", -- snippet completions
+	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
-	"RRethy/vim-illuminate",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-cmdline",
+	"hrsh7th/nvim-cmp",
 
 	-- snippets
 	"L3MON4D3/LuaSnip", --snippet engine
+	"saadparwaiz1/cmp_luasnip",
+
 	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
+	"RRethy/vim-illuminate",
 
 	-- LSP
-	"neovim/nvim-lspconfig", -- enable LSP
 	--use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",

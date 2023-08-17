@@ -8,6 +8,7 @@ if not mason_ok then
 	return
 end
 
+-- lsp 设置
 local servers = {
 	-- "sumneko_lua",
 	"lua_ls",
@@ -15,10 +16,11 @@ local servers = {
 	"tsserver",
 	"gopls",
 	"tailwindcss",
-	"yamlls",
-	-- "volar",
-	-- "eslint",
+	"volar",
+	"eslint",
 	"ruff_lsp",
+	-- 忽略
+	-- "yamlls", -- yaml
 	--"clangd",
 }
 
@@ -57,6 +59,7 @@ for _, server in pairs(servers) do
 		-- opts = vim.tbl_deep_extend("force", conf_opts, opts)
 		-- keep use left opts
 		opts = vim.tbl_deep_extend("keep", conf_opts, opts)
+		-- print("require user.lsp.settings." .. server .. " failed")
 	end
 
 	lspconfig[server].setup(opts)
@@ -67,10 +70,11 @@ if not mason_null_ls_status then
 	return
 end
 
+-- 语法
 mason_null_ls.setup({
 	-- list of formatters & linters for mason to install
 	ensure_installed = {
-		--"prettierd", -- ts/js formatter
+		"prettierd", -- ts/js formatter
 		"stylua", -- lua formatter
 		-- "eslint_d", -- ts/js linter
 		"eslint", -- ts/js linter

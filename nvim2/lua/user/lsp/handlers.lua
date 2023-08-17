@@ -83,8 +83,12 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	lsp_keymaps(bufnr)
+	if client.name == "yamlls" then
+		client.resolved_capabilities.document_formatting = false
+	end
 
+	-- print client name
+	lsp_keymaps(bufnr)
 	--lsp_highlight_document(client)
 	-- 测试
 	local ill_status_ok, illuminate = pcall(require, "illuminate")

@@ -14,8 +14,11 @@ keymap("n", "<Leader>e", ":exec 'edit' '~/.config/nvim/init.lua'<cr>", opts)
 -- NERDTree
 keymap("i", "<leader>nt", "<esc>:NERDTreeToggle<CR>", opts)
 keymap("n", "<leader>nt", ":NERDTreeToggle<CR>", opts)
-keymap("i", "<leader>o", "<esc>:NERDTree %:p:h<CR>", opts)
-keymap("n", "<leader>o", ":NERDTree %:p:h<CR>", opts)
+keymap("i", "<leader>o", "<esc>:NERDTreeFind<CR>", opts)
+keymap("n", "<leader>o", ":NERDTreeFind<CR>", opts)
+-- keymap("i", "<leader>o", "<esc>:NERDTree %:p:h<CR>", opts)
+-- keymap("n", "<leader>o", ":NERDTree %:p:h<CR>", opts)
+
 -- NvimTree
 --keymap("n", "<leader>nt", ":NvimTreeToggle<CR>", opts)
 --keymap("i", "<leader>nt", "<ESC>:NvimTreeToggle<CR>", opts)
