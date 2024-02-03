@@ -10,10 +10,6 @@ alias vim="nvim"
 alias s="kitty +kitten ssh"
 alias ssh_o="ssh -oHostKeyAlgorithms=+ssh-dss"
 alias cat="bat -p"
-# go lang
-set -x PATH $PATH /Users/fireyang/.asdf/installs/golang/1.18/packages/bin/
-set -x PATH $PATH /Users/fireyang/.asdf/installs/golang/1.18/go/bin
-set -x PATH $PATH ~/.bun/bin
 
 starship init fish | source
 
@@ -46,3 +42,11 @@ if test -f /opt/homebrew/Caskroom/miniforge/base/bin/conda
 end
 # <<< conda initialize <<<
 
+
+function uao
+    bass ". ~/.config/fish/spring.sh && uao" $argv
+end
+
+function jlab
+    bass "cd ~/work/jupyter && jupyter lab" $argv
+end
