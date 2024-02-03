@@ -78,8 +78,8 @@ require("lazy").setup({
 	"hrsh7th/nvim-cmp",
 
 	-- snippets
-	"L3MON4D3/LuaSnip", --snippet engine
-	"saadparwaiz1/cmp_luasnip",
+	-- "L3MON4D3/LuaSnip", --snippet engine
+	-- "saadparwaiz1/cmp_luasnip",
 
 	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
 	"RRethy/vim-illuminate",
@@ -90,9 +90,11 @@ require("lazy").setup({
 	"williamboman/mason-lspconfig.nvim",
 
 	-- formatting & linting
-	"jose-elias-alvarez/null-ls.nvim",
+	-- "jose-elias-alvarez/null-ls.nvim",
 	-- use("jayp0521/mason-null-ls.nvim")
-	"jay-babu/mason-null-ls.nvim",
+	-- "jay-babu/mason-null-ls.nvim",
+	-- formatter
+	"mhartington/formatter.nvim",
 
 	-- maximizes and restores current window
 	"szw/vim-maximizer",
