@@ -13,6 +13,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+	{ import = "user/plugins" },
 	-- "folke/which-key.nvim",
 	-- { "folke/neoconf.nvim", cmd = "Neoconf" },
 	-- "folke/neodev.nvim",
@@ -70,8 +71,8 @@ require("lazy").setup({
 	--use 'nvim-tree/nvim-tree.lua'
 
 	-- cmp plugins
-	"neovim/nvim-lspconfig",
-	"hrsh7th/cmp-nvim-lsp",
+	-- "neovim/nvim-lspconfig",
+	-- "hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
@@ -86,8 +87,8 @@ require("lazy").setup({
 
 	-- LSP
 	--use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+	-- "williamboman/mason.nvim",
+	-- "williamboman/mason-lspconfig.nvim",
 
 	-- formatting & linting
 	-- "jose-elias-alvarez/null-ls.nvim",
@@ -104,8 +105,16 @@ require("lazy").setup({
 	-- BurntSushi/ripgrep: brew install ripgrep
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		branch = "0.1.x",
+		-- tag = "0.1.1",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+				cond = vim.fn.executable("cmake") == 1,
+			},
+		},
 	},
 
 	-- FZF

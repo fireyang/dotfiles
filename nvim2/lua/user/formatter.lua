@@ -38,20 +38,20 @@ require("formatter").setup({
 				}
 			end,
 		},
-		-- vue = {
-		-- 	function()
-		-- 		return {
-		-- 			exe = "eslint",
-		-- 			args = {
-		-- 				"--stdin",
-		-- 				"--stdin-filename",
-		-- 				util.escape_path(util.get_current_buffer_file_path()),
-		-- 				"--fix-to-stdout",
-		-- 			},
-		-- 			stdin = true,
-		-- 		}
-		-- 	end,
-		-- },
+		vue = {
+			function()
+				return {
+					exe = "eslint",
+					args = {
+						"--stdin",
+						"--stdin-filename",
+						util.escape_path(util.get_current_buffer_file_path()),
+						"--fix-to-stdout",
+					},
+					stdin = true,
+				}
+			end,
+		},
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
