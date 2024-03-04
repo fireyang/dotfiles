@@ -95,7 +95,7 @@ require("lazy").setup({
 	-- use("jayp0521/mason-null-ls.nvim")
 	-- "jay-babu/mason-null-ls.nvim",
 	-- formatter
-	"mhartington/formatter.nvim",
+	-- "mhartington/formatter.nvim",
 
 	-- maximizes and restores current window
 	"szw/vim-maximizer",

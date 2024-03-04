@@ -10,12 +10,12 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-keymap("n", "<Leader>e", ":exec 'edit' '~/.config/nvim/init.lua'<cr>", opts)
+keymap("n", "<Leader>ev", ":exec 'edit' '~/.config/nvim/init.lua'<cr>", opts)
 -- NERDTree
-keymap("i", "<leader>nt", "<esc>:NERDTreeToggle<CR>", opts)
-keymap("n", "<leader>nt", ":NERDTreeToggle<CR>", opts)
-keymap("i", "<leader>o", "<esc>:NERDTreeFind<CR>", opts)
-keymap("n", "<leader>o", ":NERDTreeFind<CR>", opts)
+keymap("i", "<leader>ee", "<esc>:MyNERDTreeToggle<CR>", opts)
+keymap("n", "<leader>ee", ":MyNERDTreeToggle<CR>", opts)
+keymap("i", "<leader>eo", "<esc>:NERDTreeFind<CR>", opts)
+keymap("n", "<leader>eo", ":NERDTreeFind<CR>", opts)
 -- keymap("i", "<leader>o", "<esc>:NERDTree %:p:h<CR>", opts)
 -- keymap("n", "<leader>o", ":NERDTree %:p:h<CR>", opts)
 
@@ -45,6 +45,13 @@ keymap("", "<leader>mp", "<Plug>MarkdownPreviewToggle", opts)
 -- copy to System Clipboard
 keymap("", "<leader>y", '"*y', opts)
 
+-- window management
+-- keymap("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+-- keymap("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
+-- keymap("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
+-- keymap("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+-- keymap("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
 -- Comment
 -- keymap("", "<leader>cc", function()
 --   return vim.v.count == 0 and "<Plug>(comment_toggle_linewise_current)" or "<Plug>(comment_toggle_linewise_count)"
@@ -52,4 +59,4 @@ keymap("", "<leader>y", '"*y', opts)
 -- local api = require("Comment.api")
 -- vim.keymap.set("", "<leader>cc", api.toggle.linewise.current)
 --
-keymap("n", "<leader>bv", ":BufExplorer<CR>", opts)
+-- keymap("n", "<leader>bv", ":BufExplorer<CR>", opts)
