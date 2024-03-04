@@ -50,3 +50,14 @@ end
 function jlab
     bass "cd ~/work/jupyter && jupyter lab" $argv
 end
+
+# set atuin history
+if status is-interactive
+  and command -q atuin
+  # set -gx ATUIN_NOBIND "true"
+  atuin init fish | source
+
+  # bind \cr 'echo hello'
+  bind \cr _atuin_search
+  bind -M insert \cr _atuin_search
+end
