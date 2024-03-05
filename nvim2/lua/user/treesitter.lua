@@ -15,6 +15,7 @@ configs.setup({
 		"python",
 		"vue",
 		"java",
+		"sql",
 	},
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 	auto_install = false,
