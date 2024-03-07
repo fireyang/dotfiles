@@ -73,10 +73,8 @@ require("lazy").setup({
 	-- cmp plugins
 	-- "neovim/nvim-lspconfig",
 	-- "hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"hrsh7th/cmp-cmdline",
-	"hrsh7th/nvim-cmp",
+	-- "hrsh7th/cmp-cmdline",
+	-- "hrsh7th/nvim-cmp",
 
 	-- snippets
 	-- "L3MON4D3/LuaSnip", --snippet engine
@@ -123,10 +121,7 @@ require("lazy").setup({
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	"lunarvim/darkplus.nvim",
 
-	-- Git
-	"lewis6991/gitsigns.nvim",
-
-	"github/copilot.vim",
+	-- "github/copilot.vim",
 
 	-- markdown preview
 	{
