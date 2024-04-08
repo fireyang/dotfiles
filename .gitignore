@@ -5,3 +5,4 @@ vimfiles
 fish/fish_variables
 fish/completions
 fish/conf.d/
+.gitconfig
