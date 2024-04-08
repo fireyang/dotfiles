@@ -9,6 +9,7 @@ return {
 				sql = { { "sqlfluff", "sqlfmt" } },
 				go = { "gofumpt", "goimports", "gofmt" },
 				python = { "ruff_format", "isort" },
+				-- php = { "php-cs-fixer" },
 				-- vue = { "prettierd" },
 			},
 			-- format_on_save = {

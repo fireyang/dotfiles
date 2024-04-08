@@ -57,7 +57,7 @@ require("lazy").setup({
 	-- other plugins
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
-	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+	-- "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"akinsho/bufferline.nvim",
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	"akinsho/toggleterm.nvim",

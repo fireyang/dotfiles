@@ -44,6 +44,7 @@ return {
 			},
 		})
 
+		-- formatter
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"prettier", -- prettier formatter
@@ -54,6 +55,7 @@ return {
 				"eslint_d",
 				"ruff",
 				"gofumpt",
+				-- "php-cs-fixer",
 			},
 		})
 	end,
