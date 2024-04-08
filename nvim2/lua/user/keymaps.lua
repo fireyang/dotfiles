@@ -4,6 +4,7 @@ local opts = { noremap = true, silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
+local keymap2 = vim.keymap -- for conciseness
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -33,8 +34,12 @@ keymap("n", "<C-K>", "<C-W><C-K>", opts)
 keymap("n", "<C-L>", "<C-W><C-L>", opts)
 keymap("n", "<C-H>", "<C-W><C-H>", opts)
 
--- VSplit
-keymap("", "<leader>vs", ":vsplit<cr><C-l>", opts)
+-- Split
+-- keymap("", "<leader>sv", ":vsplit<cr><C-l>", opts)
+keymap2.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+keymap2.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+keymap2.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+
 keymap("", "<leader>w", ":w<cr>", opts)
 keymap("", "<leader>q", ":q<cr>", opts)
 

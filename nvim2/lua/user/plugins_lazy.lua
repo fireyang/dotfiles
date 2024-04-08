@@ -42,14 +42,14 @@ require("lazy").setup({
 	},
 	--use("bronson/vim-trailing-whitespace")
 	-- { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",      event = "VeryLazy" },
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile" },
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-	},
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	build = ":TSUpdate",
+	-- 	event = { "BufReadPost", "BufNewFile" },
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter-textobjects",
+	-- 	},
+	-- },
 	"nvim-treesitter/playground",
 	-- language
 	"rust-lang/rust.vim",
@@ -94,26 +94,22 @@ require("lazy").setup({
 	-- "jay-babu/mason-null-ls.nvim",
 	-- formatter
 	-- "mhartington/formatter.nvim",
-
-	-- maximizes and restores current window
-	"szw/vim-maximizer",
-
 	-- Telescope
 	--use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	-- BurntSushi/ripgrep: brew install ripgrep
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		-- tag = "0.1.1",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-				cond = vim.fn.executable("cmake") == 1,
-			},
-		},
-	},
+	-- {
+	-- 	"nvim-telescope/telescope.nvim",
+	-- 	branch = "0.1.x",
+	-- 	-- tag = "0.1.1",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		{
+	-- 			"nvim-telescope/telescope-fzf-native.nvim",
+	-- 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	-- 			cond = vim.fn.executable("cmake") == 1,
+	-- 		},
+	-- 	},
+	-- },
 
 	-- FZF
 

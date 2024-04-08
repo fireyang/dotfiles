@@ -7,6 +7,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				sql = { { "sqlfluff", "sqlfmt" } },
+				go = { "goimports", "gofmt" },
 				-- vue = { "prettierd" },
 			},
 			-- format_on_save = {
