@@ -12,4 +12,3 @@ require("user.comment")
 require("user.filetype")
 require("user.tree-sitter-sdp")
 require("user.functions")
---

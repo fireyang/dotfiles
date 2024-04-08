@@ -13,10 +13,10 @@ vim.g.maplocalleader = ","
 
 keymap("n", "<Leader>ev", ":exec 'edit' '~/.config/nvim/init.lua'<cr>", opts)
 -- NERDTree
-keymap("i", "<leader>ee", "<esc>:MyNERDTreeToggle<CR>", opts)
-keymap("n", "<leader>ee", ":MyNERDTreeToggle<CR>", opts)
-keymap("i", "<leader>eo", "<esc>:NERDTreeFind<CR>", opts)
-keymap("n", "<leader>eo", ":NERDTreeFind<CR>", opts)
+-- keymap("i", "<leader>ee", "<esc>:MyNERDTreeToggle<CR>", opts)
+-- keymap("n", "<leader>ee", ":MyNERDTreeToggle<CR>", opts)
+-- keymap("i", "<leader>eo", "<esc>:NERDTreeFind<CR>", opts)
+-- keymap("n", "<leader>eo", ":NERDTreeFind<CR>", opts)
 -- keymap("i", "<leader>o", "<esc>:NERDTree %:p:h<CR>", opts)
 -- keymap("n", "<leader>o", ":NERDTree %:p:h<CR>", opts)
 

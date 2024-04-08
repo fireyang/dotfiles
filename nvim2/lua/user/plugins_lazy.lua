@@ -20,18 +20,7 @@ require("lazy").setup({
 	-- "wbthomason/packer.nvim",
 	"tpope/vim-sensible",
 	-- nerdtree
-	-- { "scrooloose/nerdtree", { on = "NERDTreeToggle" } },
-	"scrooloose/nerdtree",
-	--
-	-- {
-	-- 	"nvim-neo-tree/neo-tree.nvim",
-	-- 	keys = {
-	-- 		{ "<leader>ft", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-	-- 	},
-	-- 	config = function()
-	-- 		require("neo-tree").setup()
-	-- 	end,
-	-- },
+	-- "scrooloose/nerdtree",
 
 	--use("scrooloose/nerdcommenter")
 	{
