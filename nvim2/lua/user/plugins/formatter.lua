@@ -7,7 +7,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				sql = { { "sqlfluff", "sqlfmt" } },
-				go = { "goimports", "gofmt" },
+				go = { "gofumpt", "goimports", "gofmt" },
+				python = { "ruff_format", "isort" },
 				-- vue = { "prettierd" },
 			},
 			-- format_on_save = {
@@ -32,7 +33,7 @@ return {
 					return
 				end
 				-- ...additional logic...
-				return { timeout_ms = 500, lsp_fallback = true }
+				return { timeout_ms = 500, lsp_fallback = true, async = false }
 			end,
 		})
 		vim.api.nvim_create_user_command("FormatDisable", function(args)

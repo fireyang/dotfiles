@@ -36,6 +36,7 @@ keymap("n", "<C-H>", "<C-W><C-H>", opts)
 
 -- Split
 -- keymap("", "<leader>sv", ":vsplit<cr><C-l>", opts)
+keymap2.set("n", "<leader>vs", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap2.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap2.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap2.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
