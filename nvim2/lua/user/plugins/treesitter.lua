@@ -46,6 +46,11 @@ return {
 				"rust",
 				"lua",
 				"python",
+				"go",
+				"sql",
+				"java",
+				"vue",
+				"php",
 			},
 			incremental_selection = {
 				enable = true,

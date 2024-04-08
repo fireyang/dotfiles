@@ -61,8 +61,7 @@ require("lazy").setup({
 	"akinsho/bufferline.nvim",
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	"akinsho/toggleterm.nvim",
-	"jlanzarotta/bufexplorer",
-	--use("jlanzarotta/bufexplorer")
+	-- "jlanzarotta/bufexplorer",
 
 	-- lua line
 	{ "nvim-lualine/lualine.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
