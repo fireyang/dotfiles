@@ -55,6 +55,7 @@ return {
 				"eslint_d",
 				"ruff",
 				"gofumpt",
+				"sqlfluff", -- sql lint
 				-- "php-cs-fixer",
 			},
 		})

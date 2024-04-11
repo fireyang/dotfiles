@@ -6,7 +6,7 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				sql = { { "sqlfluff", "sqlfmt" } },
+				sql = { { "sqlfmt", "sqlfluff" } },
 				go = { "gofumpt", "goimports", "gofmt" },
 				python = { "ruff_format", "isort" },
 				-- php = { "php-cs-fixer" },
