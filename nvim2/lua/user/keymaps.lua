@@ -48,6 +48,9 @@ keymap("", "<leader>mc", "<Plug>MarkdownPreview", opts)
 keymap("", "<leader>md", "<Plug>MarkdownPreviewStop", opts)
 keymap("", "<leader>mp", "<Plug>MarkdownPreviewToggle", opts)
 
+-- cd current open file dir
+keymap("", "<leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
+
 -- copy to System Clipboard
 keymap("", "<leader>y", '"*y', opts)
 

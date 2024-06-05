@@ -56,6 +56,7 @@ return {
 				"ruff",
 				"gofumpt",
 				"sqlfluff", -- sql lint
+				"xmlformatter",
 				-- "php-cs-fixer",
 			},
 		})
