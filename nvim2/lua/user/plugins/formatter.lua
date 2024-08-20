@@ -3,22 +3,23 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local conform = require("conform")
+		local formatters_by_ft = {
+			lua = { "stylua" },
+			sql = { { "sqlfmt", "sqlfluff" } },
+			go = { "gofmt" },
+			python = { "ruff_format" },
+			xml = { "xmlformatter" },
+			json = { "jq" },
+			-- vue = { "eslint_d" },
+			-- ts = { "eslint_d" },
+			-- js = { "eslint_d" },
+			-- php = { "php-cs-fixer" },
+			-- vue = { "prettierd" },
+		}
+		local util = require("conform.util")
 		conform.setup({
-			formatters_by_ft = {
-				lua = { "stylua" },
-				sql = { { "sqlfmt", "sqlfluff" } },
-				go = { "gofumpt", "goimports", "gofmt" },
-				python = { "ruff_format", "isort" },
-				xml = { "xmlformatter" },
-				-- php = { "php-cs-fixer" },
-				-- vue = { "prettierd" },
-			},
-			-- format_on_save = {
-
-			-- 	-- These options will be passed to conform.format()
-			-- 	timeout_ms = 500,
-			-- 	lsp_fallback = true,
-			-- },
+			-- log_level = vim.log.levels.DEBUG,
+			formatters_by_ft = formatters_by_ft,
 			format_on_save = function(bufnr)
 				-- Disable autoformat on certain filetypes
 				local ignore_filetypes = { "sql", "java" }
@@ -30,13 +31,36 @@ return {
 					return
 				end
 				-- Disable autoformat for files in a certain path
-				local bufname = vim.api.nvim_buf_get_name(bufnr)
-				if bufname:match("/node_modules/") then
-					return
-				end
-				-- ...additional logic...
-				return { timeout_ms = 500, lsp_fallback = true, async = false }
+				-- local bufname = vim.api.nvim_buf_get_name(bufnr)
+				-- if bufname:match("/node_modules/") then
+				-- 	return
+				-- end
+				-- print("format on save", vim.bo[bufnr].filetype)
+				return { timeout_ms = 500, lsp_format = "fallback", async = false }
 			end,
+			formatters = {
+				eslint = function(bufnr)
+					return {
+						command = util.from_node_modules("eslint"),
+						-- args = { "--stdin", "--stdin-filename", "$FILENAME" },
+						-- args = { "--format 'json'", "--fix", "$FILENAME" },
+						args = {
+							"--stdin",
+							"--stdin-filename",
+							"$FILENAME", -- This passes the current file path to eslint
+							"--fix-dry-run", -- Fixes issues and outputs the result to stdout
+						},
+						require_cwd = true,
+						stdin = true,
+						cwd = util.root_file({
+							-- "package.json",
+							"eslint.config.js",
+							"eslint.config.mjs",
+							"eslint.config.cjs",
+						}),
+					}
+				end,
+			},
 		})
 		vim.api.nvim_create_user_command("FormatDisable", function(args)
 			if args.bang then
@@ -64,7 +88,8 @@ return {
 					["end"] = { args.line2, end_line:len() },
 				}
 			end
-			require("conform").format({ async = true, lsp_fallback = true, range = range })
+			local conform = require("conform")
+			conform.format({ async = true, lsp_format = "fallback", range = range })
 		end, { range = true })
 	end,
 }

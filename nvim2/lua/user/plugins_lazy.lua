@@ -50,56 +50,12 @@ require("lazy").setup({
 	"akinsho/bufferline.nvim",
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	"akinsho/toggleterm.nvim",
-	-- "jlanzarotta/bufexplorer",
 
 	-- lua line
 	{ "nvim-lualine/lualine.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-	-- "kyazdani42/nvim-web-devicons",
-
-	--use 'nvim-tree/nvim-tree.lua'
-
-	-- cmp plugins
-	-- "neovim/nvim-lspconfig",
-	-- "hrsh7th/cmp-nvim-lsp",
-	-- "hrsh7th/cmp-cmdline",
-	-- "hrsh7th/nvim-cmp",
-
-	-- snippets
-	-- "L3MON4D3/LuaSnip", --snippet engine
-	-- "saadparwaiz1/cmp_luasnip",
 
 	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
 	"RRethy/vim-illuminate",
-
-	-- LSP
-	--use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-	-- "williamboman/mason.nvim",
-	-- "williamboman/mason-lspconfig.nvim",
-
-	-- formatting & linting
-	-- "jose-elias-alvarez/null-ls.nvim",
-	-- use("jayp0521/mason-null-ls.nvim")
-	-- "jay-babu/mason-null-ls.nvim",
-	-- formatter
-	-- "mhartington/formatter.nvim",
-	-- Telescope
-	--use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	-- BurntSushi/ripgrep: brew install ripgrep
-	-- {
-	-- 	"nvim-telescope/telescope.nvim",
-	-- 	branch = "0.1.x",
-	-- 	-- tag = "0.1.1",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		{
-	-- 			"nvim-telescope/telescope-fzf-native.nvim",
-	-- 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	-- 			cond = vim.fn.executable("cmake") == 1,
-	-- 		},
-	-- 	},
-	-- },
-
-	-- FZF
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
