@@ -39,10 +39,11 @@ return {
 				"prismals",
 				-- "pyright",
 				"rust_analyzer",
-				"ruff_lsp",
+				-- "ruff-lsp",
+				"ruff",
 				"eslint",
 				"volar",
-				"gopls",
+				-- "gopls",
 			},
 		})
 

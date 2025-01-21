@@ -79,9 +79,9 @@ M.on_attach = function(client, bufnr)
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-	if client.name == "gopls" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
+	-- if client.name == "gopls" then
+	-- 	client.server_capabilities.documentFormattingProvider = false
+	-- end
 
 	if client.name == "yamlls" then
 		client.resolved_capabilities.document_formatting = false

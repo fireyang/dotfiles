@@ -52,12 +52,15 @@ function jlab
 end
 
 # set atuin history
-if status is-interactive
-  and command -q atuin
+# if status is-interactive -a  command -q atuin
+if status --is-interactive; and command -q atuin
   # set -gx ATUIN_NOBIND "true"
   atuin init fish | source
 
   # bind \cr 'echo hello'
   bind \cr _atuin_search
-  bind -M insert \cr _atuin_search
+  # bind -M insert \cr _atuin_search
 end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/fireyang/.cache/lm-studio/bin

@@ -81,6 +81,8 @@ return {
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<leader>fs", fs, {})
 		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers sort_mru=true ignore_current_buffer=true<cr>")
+		keymap.set("n", "<leader>fr", "<cmd>:Telescope resume<CR>")
+
 		-- keymap.set("n", "<leader>bv", "<cmd>Telescope buffers sort_mru=true<cr>")
 		keymap.set("n", "<leader>fh", builtin.help_tags, {})
 		keymap.set("n", "<leader>fc", builtin.grep_string, {})

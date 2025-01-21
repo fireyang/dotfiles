@@ -14,11 +14,11 @@ local servers = {
 	"lua_ls",
 	"rust_analyzer",
 	"tsserver",
-	"gopls",
+	-- "gopls",
 	"tailwindcss",
 	"volar",
 	"eslint",
-	"ruff_lsp",
+	-- "ruff-lsp",
 	-- 忽略
 	-- "yamlls", -- yaml
 	--"clangd",
