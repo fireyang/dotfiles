@@ -1,0 +1,20 @@
+return {
+	"rest-nvim/rest.nvim",
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter",
+		opts = function(_, opts)
+			opts.ensure_installed = opts.ensure_installed or {}
+			table.insert(opts.ensure_installed, "http")
+		end,
+	},
+	config = function()
+		-- first load extension
+		-- require("telescope").load_extension("rest")
+		-- then use it, you can also use the `:Telescope rest select_env` command
+		-- require("telescope").extensions.rest.select_env()
+		vim.keymap.set("n", "<leader>rr", function()
+			vim.cmd("Rest run")
+			print("Insert mode shortcut triggered!")
+		end, { noremap = true, silent = true })
+	end,
+}

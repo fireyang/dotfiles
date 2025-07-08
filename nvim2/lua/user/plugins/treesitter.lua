@@ -23,6 +23,8 @@ return {
 			},
 			-- ensure these language parsers are installed
 			ensure_installed = {
+				-- "jinja2",
+				"jinja",
 				"json",
 				"javascript",
 				"typescript",

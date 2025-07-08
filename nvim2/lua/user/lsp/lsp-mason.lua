@@ -18,6 +18,7 @@ local servers = {
 	"tailwindcss",
 	"volar",
 	"eslint",
+	-- "llm-ls",
 	-- "ruff-lsp",
 	-- 忽略
 	-- "yamlls", -- yaml
