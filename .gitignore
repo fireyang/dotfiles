@@ -6,3 +6,4 @@ fish/fish_variables
 fish/completions
 fish/conf.d/
 .gitconfig
+.ipynb_checkpoints
