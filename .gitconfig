@@ -1,5 +1,8 @@
 [core]
     editor = vim
+    quotepath = false 
+    fileencoding = utf-8 # 中文
+
 [alias]
 	st = status
 	co = checkout
