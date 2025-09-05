@@ -50,10 +50,12 @@ return {
 			},
 			filters = {
 				dotfiles = true,
-				custom = { ".DS_Store" },
+				custom = { ".DS_Store", "^\\.git$" },
+				exclude = { ".claude", ".env*", ".gitignore" },
 			},
 			git = {
 				ignore = false,
+				enable = false,
 			},
 		})
 
